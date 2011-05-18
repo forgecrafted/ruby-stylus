@@ -8,6 +8,6 @@ describe Stylus do
 
   it "compress the file when the compress flag is given" do
     input, output = fixture :compressed
-    Stylus.compile(input, 'compress' => true).should == output
+    Stylus.compile(input, :compress => true).should == output
   end
 end

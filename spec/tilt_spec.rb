@@ -14,7 +14,7 @@ describe Tilt::StylusTemplate do
 
   it "compiles with the compress option" do
     input, output = fixture :compressed
-    template = Tilt::StylusTemplate.new('compress' => true) { |t| input }
+    template = Tilt::StylusTemplate.new(:compress => true) { |t| input }
     template.render.should == output
   end
 
