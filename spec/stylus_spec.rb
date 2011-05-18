@@ -22,4 +22,8 @@ describe Stylus do
     input, output = fixture :compressed
     Stylus.compile(input).should == output
   end
+
+  it "outputs both gem and library version" do
+    Stylus.version.should =~ /Stylus - gem .+ library .+/
+  end
 end

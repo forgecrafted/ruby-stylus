@@ -1,4 +1,5 @@
 require 'execjs'
+require 'stylus/version'
 
 begin
   require 'tilt'
@@ -28,6 +29,10 @@ module Stylus
 
     def defaults
       {:compress => self.compress }
+    end
+
+    def version
+      "Stylus - gem #{VERSION} library #{context.call('version')}"
     end
 
     protected
