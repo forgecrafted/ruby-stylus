@@ -6,6 +6,10 @@ describe Tilt::StylusTemplate do
     Tilt['application.styl'].should == Tilt::StylusTemplate
   end
 
+  it "has a content-type" do
+    Tilt::StylusTemplate.default_mime_type.should == 'text/css'
+  end
+
   it "compiles the given source" do
     input, output = fixture :simple
     template = Tilt::StylusTemplate.new { |t| input }

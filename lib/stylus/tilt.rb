@@ -6,6 +6,8 @@ module Tilt
     #
     # Stylus templates do not support object scopes, locals, or yield.
   class StylusTemplate < Template
+    self.default_mime_type = 'text/css'
+
     def prepare
     end
 
