@@ -1,6 +1,17 @@
 # Ruby Stylus
 
-`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on Node.js. It's a replacement for the [stylus_rails](https://github.com/lucasmazza/stylus_rails) gem, aiming to support the Rails 3.1 asset pipeline (via [tilt](https://github.com/rtomayko/tilt) and more agnostic cenarios, backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
+`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on Node.js. It's aims to be a replacement for the [stylus_rails](https://github.com/lucasmazza/stylus_rails) gem, to support the Rails 3.1 asset pipeline (via [Tilt](https://github.com/rtomayko/tilt)) and more agnostic scenarios, backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
+
+## Usage
+
+First, be sure to have stylus installed in your system. If needed, check the project [README](https://github.com/learnboost/stylus) for more information.
+
+    require 'stylus'
+
+    Stylus.compile(File.read('application.styl')) # returns the compiled stylesheet.
+
+    # Using the compress option
+    Stylus.compile(File.read('application.styl'), 'compress' => true)
 
 ## Changelog
 [here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)

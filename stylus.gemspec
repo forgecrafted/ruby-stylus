@@ -6,13 +6,14 @@ Gem::Specification.new do |s|
   s.name        = "stylus"
   s.version     = Stylus::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Lucas Mazza"]
+  s.email       = ["luc4smazza@gmail.com"]
+  s.homepage    = "https://github.com/lucasmazza/ruby-stylus"
+  s.summary     = %q{Ruby Stylus Compiler}
+  s.description = %q{Bridge library to compile .styl stylesheets from ruby code.}
 
-  s.rubyforge_project = "stylus"
+  s.add_dependency 'execjs'
+  s.add_development_dependency 'rspec', '~>2.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
