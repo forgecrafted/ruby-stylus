@@ -10,4 +10,10 @@ describe Stylus do
     input, output = fixture :compressed
     Stylus.compile(input, :compress => true).should == output
   end
+
+  it "uses the class level compress flag" do
+    Stylus.compress = true
+    input, output = fixture :compressed
+    Stylus.compile(input).should == output
+  end
 end

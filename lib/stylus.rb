@@ -10,8 +10,23 @@ end
 module Stylus
 
   class << self
+    @@compress = false
+
+    def compress
+      @@compress
+    end
+
+    def compress=(val)
+      @@compress = val
+    end
+
     def compile(source, options = {})
+      options = defaults.merge(options)
       context.call('compiler', source, options)
+    end
+
+    def defaults
+      {:compress => self.compress }
     end
 
     protected
