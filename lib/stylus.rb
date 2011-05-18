@@ -1,12 +1,6 @@
 require 'execjs'
 require 'stylus/version'
-
-begin
-  require 'tilt'
-  require 'stylus/tilt'
-  Tilt.register Tilt::StylusTemplate, 'styl'
-rescue LoadError
-end
+require 'stylus/railtie' if defined?(::Rails)
 
 module Stylus
 

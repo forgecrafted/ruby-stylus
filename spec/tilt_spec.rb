@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'stylus/tilt'
 
 describe Tilt::StylusTemplate do
 

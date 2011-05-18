@@ -1,3 +1,4 @@
+require 'tilt'
 require 'tilt/template'
 
 module Tilt
@@ -16,3 +17,5 @@ module Tilt
     end
   end
 end
+
+Tilt.register Tilt::StylusTemplate, 'styl'
