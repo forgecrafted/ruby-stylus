@@ -11,7 +11,11 @@ First, be sure to have stylus installed in your system. If needed, check the pro
     Stylus.compile(File.read('application.styl')) # returns the compiled stylesheet.
 
     # Using the compress option
-    Stylus.compile(File.read('application.styl'), 'compress' => true)
+    Stylus.compile(File.read('application.styl'), :compress => true)
+
+    # Or use the global compress flag
+    Stylus.compress = true
+    Stylus.compile(File.read('application.styl'))
 
 ## Changelog
 [here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
