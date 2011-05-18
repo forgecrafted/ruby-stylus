@@ -14,6 +14,7 @@ module Stylus
       context.call('compiler', source, options)
     end
 
+    protected
     def context
       @@_context ||= backend.compile(script)
     end
@@ -24,6 +25,8 @@ module Stylus
     end
 
     def backend
+      # Targeting the Runtime directly so we don't mess with other
+      # gems using ExecJS.
       @@_backend ||= ExecJS::Runtimes::Node
     end
   end
