@@ -21,6 +21,7 @@ module Stylus
     end
 
     def compile(source, options = {})
+      source = source.read if source.respond_to?(:read)
       options = defaults.merge(options)
       context.call('compiler', source, options)
     end
