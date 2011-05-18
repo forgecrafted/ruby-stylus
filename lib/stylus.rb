@@ -1,5 +1,12 @@
 require 'execjs'
 
+begin
+  require 'tilt'
+  require 'stylus/tilt'
+  Tilt.register Tilt::StylusTemplate, 'styl'
+rescue LoadError
+end
+
 module Stylus
 
   class << self
