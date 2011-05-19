@@ -20,7 +20,12 @@ First, be sure to have stylus installed in your system. If needed, check the pro
 
 ### With the Rails 3.1 Asset Pipeline.
 
-Just add the `stylus` gem to your Gemfile and the gem will hook itself into Sprockets and enable the `.styl` templates for your stylesheets.
+Just add the `stylus` gem to your Gemfile and the gem will hook itself into Sprockets and enable the `.styl` templates for your stylesheets. If you're including partial files inside your stylesheets, remember to use the `depend_on` directive on the top of your file so Sprockets can recompile it when the partial changes, as below.
+
+    //= depend_on 'mixins/vendor.styl'
+    @import 'mixins/vendor'
+
+    // Code goes here...
 
 ## Changelog
 [here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
