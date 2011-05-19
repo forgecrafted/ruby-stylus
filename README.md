@@ -1,6 +1,6 @@
 # Ruby Stylus
 
-`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on Node.js. It's aims to be a replacement for the [stylus_rails](https://github.com/lucasmazza/stylus_rails) gem, to support the Rails 3.1 asset pipeline (via [Tilt](https://github.com/rtomayko/tilt)) and more agnostic scenarios, backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
+`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on Node.js. It's aims to be a replacement for the [stylus_rails](https://github.com/lucasmazza/stylus_rails) gem and to support the Rails 3.1 asset pipeline (via [Tilt](https://github.com/rtomayko/tilt)) and other scenarios, backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
 
 ## Usage
 
@@ -8,14 +8,19 @@ First, be sure to have stylus installed in your system. If needed, check the pro
 
     require 'stylus'
 
-    Stylus.compile(File.read('application.styl')) # returns the compiled stylesheet.
+    # Accepts a raw string or an IO object (File, StringIO or anything that responds to 'read').
+    Stylus.compile(File.new('application.styl')) # returns the compiled stylesheet.
 
-    # Using the compress option
+    # Using the compress option, removing most newlines from the code.
     Stylus.compile(File.read('application.styl'), :compress => true)
 
     # Or use the global compress flag
     Stylus.compress = true
     Stylus.compile(File.read('application.styl'))
+
+### With the Rails 3.1 Asset Pipeline.
+
+Just add the `stylus` gem to your Gemfile and the gem will hook itself into Sprockets and enable the `.styl` templates for your stylesheets.
 
 ## Changelog
 [here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
