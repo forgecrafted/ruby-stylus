@@ -23,6 +23,18 @@ describe Stylus do
     Stylus.compile(input).should == output
   end
 
+  it "imports the given paths" do
+    path = fixture_root
+    input, output = fixture :import
+    Stylus.compile(input, :paths => path).should == output
+  end
+
+  it "handles the import paths globally" do
+    Stylus.paths << fixture_root
+    input, output = fixture :import
+    Stylus.compile(input).should == output
+  end
+
   it "outputs both gem and library version" do
     Stylus.version.should =~ /Stylus - gem .+ library .+/
   end

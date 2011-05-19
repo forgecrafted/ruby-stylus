@@ -6,6 +6,15 @@ module Stylus
 
   class << self
     @@compress = false
+    @@paths = []
+
+    def paths
+      @@paths
+    end
+
+    def paths=(val)
+      @@paths = Array(val)
+    end
 
     def compress
       @@compress
@@ -17,12 +26,19 @@ module Stylus
 
     def compile(source, options = {})
       source = source.read if source.respond_to?(:read)
-      options = defaults.merge(options)
+      options = merge_options(options)
       context.call('compiler', source, options)
     end
 
+    def merge_options(options)
+      _paths = options.delete(:paths)
+      options = defaults.merge(options)
+      options[:paths] = paths.concat(Array(_paths))
+      options
+    end
+
     def defaults
-      {:compress => self.compress }
+      { :compress => self.compress, :paths => self.paths }
     end
 
     def version
