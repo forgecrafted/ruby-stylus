@@ -51,8 +51,7 @@ module Stylus
     end
 
     def script
-      path = File.expand_path(File.dirname(__FILE__))
-      File.read(File.join(path, 'stylus', 'compiler.js'))
+      File.read(File.expand_path('../stylus/compiler.js',__FILE__))
     end
 
     def backend
