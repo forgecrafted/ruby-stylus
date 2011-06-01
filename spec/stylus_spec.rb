@@ -38,4 +38,9 @@ describe Stylus do
   it "outputs both gem and library version" do
     Stylus.version.should =~ /Stylus - gem .+ library .+/
   end
+
+  it "converts CSS to Stylus" do
+    stylus, css = fixture :stylesheet
+    Stylus.convert(css).should == stylus
+  end
 end

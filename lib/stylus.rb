@@ -30,6 +30,11 @@ module Stylus
       context.call('compiler', source, options)
     end
 
+    def convert(source)
+      source = source.read if source.respond_to?(:read)
+      context.call('convert', source)
+    end
+
     def merge_options(options)
       _paths = options.delete(:paths)
       options = defaults.merge(options)
