@@ -18,6 +18,9 @@ First, be sure to have stylus installed in your system. If needed, check the pro
     Stylus.compress = true
     Stylus.compile(File.read('application.styl'))
 
+    # Converting old and boring CSS to awesome Stylus.
+    Stylus.convert(File.new('file.css'))
+
 ### With the Rails 3.1 Asset Pipeline.
 
 Just add the `stylus` gem to your Gemfile and the gem will hook itself into Sprockets and enable the `.styl` templates for your stylesheets. If you're including partial files inside your stylesheets, remember to use the `depend_on` directive on the top of your file so Sprockets can recompile it when the partial changes, as below.
