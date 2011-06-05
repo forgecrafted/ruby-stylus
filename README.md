@@ -6,29 +6,32 @@
 
 First, be sure to have stylus installed in your system. If needed, check the project [README](https://github.com/learnboost/stylus) for more information.
 
-    require 'stylus'
+```ruby
+require 'stylus'
 
-    # Accepts a raw string or an IO object (File, StringIO or anything that responds to 'read').
-    Stylus.compile(File.new('application.styl')) # returns the compiled stylesheet.
+# Accepts a raw string or an IO object (File, StringIO or anything that responds to 'read').
+Stylus.compile(File.new('application.styl')) # returns the compiled stylesheet.
 
-    # Using the compress option, removing most newlines from the code.
-    Stylus.compile(File.read('application.styl'), :compress => true)
+# Using the compress option, removing most newlines from the code.
+Stylus.compile(File.read('application.styl'), :compress => true)
 
-    # Or use the global compress flag
-    Stylus.compress = true
-    Stylus.compile(File.read('application.styl'))
+# Or use the global compress flag
+Stylus.compress = true
+Stylus.compile(File.read('application.styl'))
 
-    # Converting old and boring CSS to awesome Stylus.
-    Stylus.convert(File.new('file.css'))
-
+# Converting old and boring CSS to awesome Stylus.
+Stylus.convert(File.new('file.css'))
+```
 ### With the Rails 3.1 Asset Pipeline.
 
 Just add the `stylus` gem to your Gemfile and the gem will hook itself into Sprockets and enable the `.styl` templates for your stylesheets. If you're including partial files inside your stylesheets, remember to use the `depend_on` directive on the top of your file so Sprockets can recompile it when the partial changes, as below.
 
-    //= depend_on 'mixins/vendor.styl'
-    @import 'mixins/vendor'
+```sass
+//= depend_on 'mixins/vendor.styl'
+@import 'mixins/vendor'
 
-    // Code goes here...
+// Code goes here...
+```
 
 If you just want to merge the generated css in another file, you can use only the `require` directive from Sprockets.
 
