@@ -1,7 +1,7 @@
 ## Changelog
 
-### 0.0.3 (Unreleased)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.0.2...master)
+### 0.0.3 (2011-06-06)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.0.2...v0.0.3)
 
 * Bugfix: stylus now works in production environment.
 
