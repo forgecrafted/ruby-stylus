@@ -1,11 +1,9 @@
+### Stylus template implementation for `Tilt`.
+# It can be used by the `Rails` Asset Pipeline or `Sinatra` Applications.
 require 'tilt'
 require 'tilt/template'
 
 module Tilt
-  # Stylus template implementation. See:
-  # http://learnboost.github.com/stylus/
-  #
-  # Stylus templates do not support object scopes, locals, or yield.
   class StylusTemplate < Template
     self.default_mime_type = 'text/css'
 
