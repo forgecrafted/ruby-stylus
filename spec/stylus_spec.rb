@@ -7,18 +7,18 @@ describe Stylus do
     Stylus.compile(input).should == output
   end
 
-  it "accepts a IO object as source" do
+  it "accepts an IO object" do
     input, output = fixture :simple
     input = StringIO.new(input)
     Stylus.compile(input).should == output
   end
 
-  it "compress the file when the compress flag is given" do
+  it "compress the file when the 'compress' flag is given" do
     input, output = fixture :compressed
     Stylus.compile(input, :compress => true).should == output
   end
 
-  it "uses the class level compress flag" do
+  it "handles the compress flag globally" do
     Stylus.compress = true
     input, output = fixture :compressed
     Stylus.compile(input).should == output

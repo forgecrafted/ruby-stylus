@@ -3,7 +3,7 @@ require 'stylus/tilt'
 
 describe Tilt::StylusTemplate do
 
-  it "is registered for .styl files" do
+  it "registers the template for .styl files" do
     Tilt['application.styl'].should == Tilt::StylusTemplate
   end
 
