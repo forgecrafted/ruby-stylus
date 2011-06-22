@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Stylus do
+
+  before do
+    Stylus.plugins.clear
+  end
+
   it "compiles the given source" do
     input, output = fixture :simple
     Stylus.compile(input).should == output
@@ -42,5 +47,16 @@ describe Stylus do
   it "converts CSS to Stylus" do
     stylus, css = fixture :stylesheet
     Stylus.convert(css).should == stylus
+  end
+
+  it "stores the given plugins" do
+    Stylus.use :one, :two, :argument => true
+    Stylus.should have(2).plugins
+  end
+
+  it "includes the given plugins" do
+    Stylus.use :nib
+    input, output = fixture :nib
+    Stylus.compile(input).should == output
   end
 end

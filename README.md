@@ -21,6 +21,9 @@ Stylus.compile(File.read('application.styl'))
 
 # Converting old and boring CSS to awesome Stylus.
 Stylus.convert(File.new('file.css'))
+
+# Importing plugins directly from Node.JS, like nib.
+Stylus.use :nib
 ```
 ### With the Rails 3.1 Asset Pipeline.
 

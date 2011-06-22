@@ -7,6 +7,19 @@ module Stylus
   class << self
     @@compress = false
     @@paths = []
+    @@plugins = {}
+
+    def use(*options)
+      arguments = options.last.is_a?(Hash) ? options.pop : {}
+      options.each do |plugin|
+        @@plugins[plugin] = arguments
+      end
+    end
+    alias :plugin :use
+
+    def plugins
+      @@plugins
+    end
 
     def paths
       @@paths
@@ -27,7 +40,7 @@ module Stylus
     def compile(source, options = {})
       source = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      context.call('compiler', source, options)
+      context.call('compiler', source, options, plugins)
     end
 
     def convert(source)
