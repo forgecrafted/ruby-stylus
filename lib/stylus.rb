@@ -18,7 +18,7 @@
 require 'execjs'
 require 'stylus/version'
 require 'stylus/railtie' if defined?(::Rails)
-
+module Stylus
   class << self
     @@compress = false
     @@paths = []
