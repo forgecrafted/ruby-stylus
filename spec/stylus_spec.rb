@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Stylus do
 
-  before do
-    Stylus.plugins.clear
-  end
-
   it "compiles the given source" do
     input, output = fixture :simple
     Stylus.compile(input).should == output
