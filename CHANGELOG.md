@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.1.1 (2001-07-07)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.0...v0.1.1)
+
+* Requiring `stylus/tilt` outside the `Railtie`, by [DAddYE](https://github.com/DAddYE).
+
 ### 0.1.0 (2011-06-21)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.0.3...v0.1.0)
 
