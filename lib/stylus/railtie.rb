@@ -2,8 +2,6 @@
 # `Railtie` responsible for injecting `stylus` inside the
 # Rails application and the `Sprockets` Asset Pipeline.
 
-require 'stylus/tilt'
-
 module Stylus
   class Railtie < ::Rails::Railtie
 
