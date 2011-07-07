@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~>2.0'
   s.add_development_dependency 'tilt'
   s.add_development_dependency 'yajl-ruby'
+  s.add_development_dependency 'rocco'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
