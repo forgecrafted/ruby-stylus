@@ -1,7 +1,6 @@
 ### Stylus Railtie
 # `Railtie` responsible for injecting `stylus` inside the
 # Rails application and the `Sprockets` Asset Pipeline.
-
 module Stylus
   class Railtie < ::Rails::Railtie
 
@@ -12,6 +11,8 @@ module Stylus
       # Loading `Sprockets` before Rails so we can register our own Engine.
       require 'sprockets'
       require 'sprockets/engines'
+      require 'stylus/tilt'
+
       Sprockets.register_engine '.styl', Tilt::StylusTemplate
     end
 

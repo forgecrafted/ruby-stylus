@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.1.2 (2001-07-08)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.1...v0.1.2)
+
+* Fixes missing `require` for Rails apps.
+
 ### 0.1.1 (2001-07-07)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.0...v0.1.1)
 
