@@ -1,6 +1,10 @@
 require 'stylus'
+require 'support/helpers'
+require 'support/matchers'
+require 'support/generators/test_case'
 
 RSpec.configure do |config|
+  config.include Helpers
 
   config.after :each do
     Stylus.compress = false
@@ -8,14 +12,3 @@ RSpec.configure do |config|
     Stylus.plugins.clear
   end
 end
-
-def fixture_root
-  File.expand_path('../fixtures', __FILE__)
-end
-
-def fixture(name)
-  stylus = File.read(File.join(fixture_root, "#{name}.styl"))
-  css    = File.read(File.join(fixture_root, "#{name}.css"))
-  [stylus, css]
-end
-

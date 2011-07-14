@@ -5,7 +5,7 @@ module Stylus
   class Railtie < ::Rails::Railtie
 
     initializer :setup_stylus do |app|
-      config.app_generators.stylesheet_engine :styl
+      config.app_generators.stylesheet_engine :stylus
       next unless app.config.assets.enabled
 
       # Loading `Sprockets` before Rails so we can register our own Engine.

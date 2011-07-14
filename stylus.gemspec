@@ -13,8 +13,10 @@ Gem::Specification.new do |s|
   s.description = %q{Bridge library to compile .styl stylesheets from ruby code.}
 
   s.add_dependency 'execjs'
-  s.add_development_dependency 'rspec', '~>2.0'
-  s.add_development_dependency 'tilt'
+  s.add_development_dependency 'rspec',       '~> 2.0'
+  s.add_development_dependency 'railties',    '~> 3.1.0.rc1'
+  s.add_development_dependency 'actionpack',  '~> 3.1.0.rc1'
+  s.add_development_dependency 'sprockets',   '2.0.0.beta.10'
   s.add_development_dependency 'yajl-ruby'
   s.add_development_dependency 'rocco'
 

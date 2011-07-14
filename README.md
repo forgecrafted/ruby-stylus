@@ -38,10 +38,6 @@ Just add the `stylus` gem to your Gemfile and the gem will hook itself into Spro
 
 If you just want to merge the generated css in another file, you can use only the `require` directive from Sprockets.
 
-### Rails Generators
-
-`stylus` ships with a `stylus:install` generator that copy 2 `.styl` files to your `lib/` folder, so when you run rails generators like `rails g assets products` or `rails g scaffold post` it will create `.styl` files instead of plain `.css` ones.
-
 ## Changelog
 [here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
 
