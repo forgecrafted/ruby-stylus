@@ -1,11 +1,16 @@
 ## Changelog
 
-### 0.1.2 (2001-07-08)
+### 0.2.0 (211-07-14)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.2...v0.2.0)
+
+* Replaced `stylus:install` with proper generators for Rails 3.1 - now all hooks for the `stylesheet_engine` will generate `.styl` files.
+
+### 0.1.2 (2011-07-08)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.1...v0.1.2)
 
 * Fixes missing `require` for Rails apps.
 
-### 0.1.1 (2001-07-07)
+### 0.1.1 (2011-07-07)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.0...v0.1.1)
 
 * Requiring `stylus/tilt` outside the `Railtie`, by [DAddYE](https://github.com/DAddYE).
