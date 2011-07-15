@@ -1,3 +1,4 @@
+require 'stylus'
 require 'spec_helper'
 
 describe Stylus do

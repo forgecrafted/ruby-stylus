@@ -1,20 +1,15 @@
+require 'stylus/tilt'
+require 'sprockets'
 ### Stylus Railtie
 # `Railtie` responsible for injecting `stylus` inside the
 # Rails application and the `Sprockets` Asset Pipeline.
 module Stylus
   class Railtie < ::Rails::Railtie
 
-    initializer :setup_stylus do |app|
-      config.app_generators.stylesheet_engine :stylus
-      next unless app.config.assets.enabled
+    config.app_generators.stylesheet_engine :stylus
 
-      # Loading `Sprockets` before Rails so we can register our own Engine.
-      require 'sprockets'
-      require 'sprockets/engines'
-      require 'stylus/tilt'
-
-      Sprockets.register_engine '.styl', Tilt::StylusTemplate
-    end
+    Sprockets::Engines #autoloading
+    Sprockets.register_engine '.styl', Tilt::StylusTemplate
 
     # Includes the `Rails` asset load path into `stylus` so any
     # `.styl` file inside it can be imported.

@@ -1,4 +1,3 @@
-require 'stylus'
 require 'support/helpers'
 require 'support/matchers'
 require 'support/generators/test_case'
