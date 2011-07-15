@@ -1,11 +1,18 @@
-## Stylus
+require 'execjs'
+require 'stylus/version'
+require 'stylus/tilt' if defined?(::Tilt)
+require 'stylus/railtie' if defined?(::Rails)
 
+## Stylus
+#
 # `stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus)
 # library that runs on Node.js. It's aims to be a replacement for the
 # [stylus_rails](https://github.com/lucasmazza/stylus_rails) gem and to support the Rails 3.1 asset pipeline
 # (via [Tilt](https://github.com/rtomayko/tilt)) and other scenarios,
-# backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.module Stylus
+# backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
+#
 ### Usage
+#
 # To compile a `.styl` file or an arbitrary String to .CSS using stylus, just use the `compile` method.
 #
 # `Stylus.compile(File.new('application.styl'))`
@@ -14,11 +21,6 @@
 #
 # `Stylus.compile(File.read('application.styl'), :compress => true)`
 #
-
-require 'execjs'
-require 'stylus/version'
-require 'stylus/tilt' if defined?(::Tilt)
-require 'stylus/railtie' if defined?(::Rails)
 module Stylus
   class << self
     @@compress = false
@@ -26,7 +28,6 @@ module Stylus
     @@plugins = {}
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
-
     def use(*options)
       arguments = options.last.is_a?(Hash) ? options.pop : {}
       options.each do |plugin|
@@ -35,7 +36,7 @@ module Stylus
     end
     alias :plugin :use
 
-    # Retrieves the plugins registered by `use`.
+    # Retrieves all the registered plugins registered.
     def plugins
       @@plugins
     end

@@ -1,8 +1,9 @@
-### Stylus template implementation for `Tilt`.
-# It can be used by the `Rails` Asset Pipeline or `Sinatra` Applications.
 require 'tilt'
 
 module Tilt
+  ### Stylus template implementation for `Tilt`.
+  #
+  # It can be used by the `Rails` Asset Pipeline or `Sinatra` applications.
   class StylusTemplate < Template
     self.default_mime_type = 'text/css'
 
