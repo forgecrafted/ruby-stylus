@@ -7,8 +7,8 @@ describe Rails::Generators::ScaffoldGenerator do
   include Generators::TestCase
   arguments  %w(posts --stylesheet-engine=stylus --orm=false)
 
-  it 'generates the default scaffold style' do
-    file('app/assets/stylesheets/scaffold.css.styl').should exist
+  it 'generates the default scaffold stylesheet' do
+    file('app/assets/stylesheets/scaffold.css').should exist
   end
 
   it 'generates a named .styl file' do
