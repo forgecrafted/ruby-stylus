@@ -112,4 +112,8 @@ module Stylus
       @@_backend ||= ExecJS::Runtimes::Node
     end
   end
+
+  # Exports the `.node_modules` folder on the working directory so npm can
+  # require modules installed locally.
+  ENV['NODE_PATH'] = "#{File.expand_path('node_modules')}:#{ENV['NODE_PATH']}"
 end

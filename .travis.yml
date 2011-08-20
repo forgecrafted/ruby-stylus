@@ -1,5 +1,4 @@
 before_script: "npm install stylus nib"
-env: 'NODE_PATH="`pwd`/node_modules:$NODE_PATH"'
 rvm:
   - ree
   - 1.9.2
