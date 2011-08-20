@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.2.1
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.0...master)
+
+* Removed a hack for a Sprockets loading order issue;
+* Testing on 1.9.2, REE and Rubinius thanks to [Travis CI](travis-ci.org/#!/lucasmazza/ruby-stylus).
+
 ### 0.2.0 (211-07-14)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.2...v0.2.0)
 
