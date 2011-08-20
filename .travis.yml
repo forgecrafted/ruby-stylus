@@ -1,4 +1,5 @@
 before_script: "sudo npm install stylus nib -g"
+env: 'NODE_PATH="/usr/lib/node_modules:$NODE_PATH"'
 rvm:
   - 1.9.2
 notifications:
