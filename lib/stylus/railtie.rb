@@ -1,5 +1,4 @@
 require 'stylus/tilt'
-require 'sprockets'
 module Stylus
   ### Stylus Railtie
   #
@@ -9,13 +8,11 @@ module Stylus
 
     config.app_generators.stylesheet_engine :stylus
 
-    Sprockets::Engines #autoloading
-    Sprockets.register_engine '.styl', Tilt::StylusTemplate
-
     # Includes the `Rails` asset load path into `stylus` so any
     # `.styl` file inside it can be imported by the `stylus` API.
-    config.after_initialize do |app|
+    initializer :setup_stylus do |app|
       Stylus.paths.concat app.assets.paths
+      app.assets.register_engine '.styl', Tilt::StylusTemplate
     end
 
   end
