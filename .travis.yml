@@ -1,3 +1,5 @@
-before_script: "npm install stylus nib -g"
+before_script: "sudo npm install stylus nib -g"
 rvm:
   - 1.9.2
+notifications:
+  disabled: true
