@@ -8,12 +8,14 @@ module Stylus
 
     config.app_generators.stylesheet_engine :stylus
 
-    # Includes the `Rails` asset load path into `stylus` so any
-    # `.styl` file inside it can be imported by the `stylus` API.
     initializer :setup_stylus do |app|
-      Stylus.paths.concat app.assets.paths
       app.assets.register_engine '.styl', Tilt::StylusTemplate
     end
 
+    # Includes the `Rails` asset load path into `stylus` so any
+    # `.styl` file inside it can be imported by the `stylus` API.
+    config.after_initialize do |app|
+      Stylus.paths.concat app.assets.paths
+    end
   end
 end
