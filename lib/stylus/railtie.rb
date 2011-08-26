@@ -11,7 +11,7 @@ module Stylus
     # Includes the `Rails` asset load path into `stylus` so any
     # `.styl` file inside it can be imported by the `stylus` API.
     initializer "stylus.initialize", :after => "sprockets.environment" do |app|
-      Stylus.compress = config.assets.compress
+      Stylus.compress = app.config.assets.compress
       Stylus.paths.concat app.assets.paths
 
       app.assets.register_engine '.styl', Tilt::StylusTemplate      
