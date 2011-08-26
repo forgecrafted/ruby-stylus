@@ -15,7 +15,7 @@ module Stylus
     # Includes the `Rails` asset load path into `stylus` so any
     # `.styl` file inside it can be imported by the `stylus` API.
     config.after_initialize do |app|
-      Stylus.compress = app.assets.compress
+      Stylus.compress = config.assets.compress
       Stylus.paths.concat app.assets.paths
     end
   end
