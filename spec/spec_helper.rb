@@ -2,9 +2,10 @@ require 'rails'
 require 'rails/test_help'
 require 'rails/generators/test_case'
 
+require 'active_support/railtie'
 require 'action_controller/railtie'
 require 'sprockets/railtie'
-require 'active_support/railtie'
+require 'stylus/railtie'
 
 require 'active_support/core_ext/class/attribute_accessors'
 
