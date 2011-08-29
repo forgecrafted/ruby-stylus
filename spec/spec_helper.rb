@@ -1,3 +1,13 @@
+require 'rails'
+require 'rails/test_help'
+require 'rails/generators/test_case'
+
+require 'action_controller/railtie'
+require 'sprockets/railtie'
+require 'active_support/railtie'
+
+require 'active_support/core_ext/class/attribute_accessors'
+
 require 'support/helpers'
 require 'support/matchers'
 require 'support/generators/test_case'

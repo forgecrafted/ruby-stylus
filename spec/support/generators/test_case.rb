@@ -2,12 +2,6 @@
 # But `RSpec::Rails::RailsExampleGroup` loads a truckload of things from rails and rspec-rails
 # That we don't need.
 
-ENV["RAILS_ENV"] = 'test'
-require 'rails'
-require 'rails/test_help'
-require 'rails/generators/test_case'
-require 'active_support/core_ext/class/attribute_accessors'
-
 module Generators
   module TestCase
     extend ActiveSupport::Concern
