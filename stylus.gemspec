@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'execjs'
   s.add_development_dependency 'rspec',       '~> 2.0'
-  s.add_development_dependency 'railties',    '~> 3.1.0.rc6'
+  s.add_development_dependency 'railties',    '~> 3.1.0'
   s.add_development_dependency 'tzinfo'
   s.add_development_dependency 'yajl-ruby'
   s.add_development_dependency 'rocco'

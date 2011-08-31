@@ -1,14 +1,14 @@
 ## Changelog
 
-### 0.2.1
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.0...master)
+### 0.2.1 (2011-08-30)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.0...v0.2.1)
 
 * Removed a hack for a Sprockets loading order issue;
 * Testing on 1.9.2, REE and Rubinius thanks to [Travis CI](travis-ci.org/#!/lucasmazza/ruby-stylus);
 * Enables compression if `Sprockets` is configured to do so;
 * Added Rails and Sprockets tests.
 
-### 0.2.0 (211-07-14)
+### 0.2.0 (2011-07-14)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.1.2...v0.2.0)
 
 * Replaced `stylus:install` with proper generators for Rails 3.1 - now all hooks for the `stylesheet_engine` will generate `.styl` files.
