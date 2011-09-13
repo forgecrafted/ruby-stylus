@@ -36,7 +36,7 @@ module Stylus
     end
     alias :plugin :use
 
-    # Retrieves all the registered plugins registered.
+    # Retrieves all the registered plugins.
     def plugins
       @@plugins
     end
@@ -77,7 +77,7 @@ module Stylus
     end
 
     # Returns a `Hash` of the given `options` merged with the default configuration.
-    # It also concats the global load path with a given `Array`.
+    # It also concats the global load path with a given `:paths` option.
     def merge_options(options)
       _paths = options.delete(:paths)
       options = defaults.merge(options)
