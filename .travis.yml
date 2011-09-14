@@ -3,5 +3,3 @@ rvm:
   - ree
   - 1.9.2
   - rbx-2.0
-notifications:
-  disabled: true
