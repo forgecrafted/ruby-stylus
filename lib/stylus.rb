@@ -106,10 +106,14 @@ module Stylus
       File.read(File.expand_path('../stylus/compiler.js',__FILE__))
     end
 
-    # We're targeting the Runtime directly so we don't mess with other
-    # gems using `ExecJS`.
+    # `ExecJS` 1.2.5+ doesn't support `require` statements on node anymore,
+    # so we use a new instance of the `ExternalRuntime` with the old runner script.
     def backend
-      @@_backend ||= ExecJS::Runtimes::Node
+      @@_backend ||= ExecJS::ExternalRuntime.new(
+        :name        => 'Node.js (V8)',
+        :command     => ["nodejs", "node"],
+        :runner_path => File.expand_path("../stylus/runner.js", __FILE__)
+        )
     end
   end
 
