@@ -97,7 +97,8 @@ module Stylus
       options
     end
 
-    # Returns the default `Hash` of options.
+    # Returns the default `Hash` of options -
+    # the compress flag, the global load path and the linenos flag.
     def defaults
       { :compress => self.compress, :paths => self.paths, :linenos => self.debug? }
     end

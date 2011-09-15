@@ -40,6 +40,9 @@ Stylus.convert(File.new('file.css'))
 
 # Importing plugins directly from Node.js, like nib.
 Stylus.use :nib
+
+# Enabling debug info, which generate comments on the CSS with the line for the a given selector.
+Stylus.debug = true
 ```
 ### With the Rails 3.1 Asset Pipeline.
 
