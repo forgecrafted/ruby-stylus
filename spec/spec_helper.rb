@@ -18,6 +18,7 @@ RSpec.configure do |config|
 
   config.after :each do
     Stylus.compress = false
+    Stylus.debug = false
     Stylus.paths = []
     Stylus.plugins.clear
   end

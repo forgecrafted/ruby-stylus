@@ -56,4 +56,19 @@ describe Stylus do
     input, output = fixture :nib
     Stylus.compile(input).should == output
   end
+
+  describe "The debug flag" do
+    let(:context) { context = double('ExecJS Context') }
+    let(:options) { {:compress => false, :paths => [], :linenos => Stylus.debug?} }
+
+    before do
+      Stylus.stub(:context) { context }
+    end
+
+    it "sets the 'linenos' option according to the 'debug' flag" do
+      Stylus.debug = true
+      context.should_receive(:call).with('compiler','source', options, {})
+      Stylus.compile('source')
+    end
+  end
 end

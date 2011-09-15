@@ -16,6 +16,7 @@ module Stylus
     # `.styl` file inside it can be imported by the `stylus` API.
     config.after_initialize do |app|
       Stylus.compress = app.config.assets.compress
+      Stylus.debug = Rails.env.development?
       Stylus.paths.concat app.assets.paths
     end
   end

@@ -24,8 +24,9 @@ require 'stylus/railtie' if defined?(::Rails)
 module Stylus
   class << self
     @@compress = false
-    @@paths = []
-    @@plugins = {}
+    @@debug    = false
+    @@paths    = []
+    @@plugins  = {}
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
     def use(*options)
@@ -49,6 +50,17 @@ module Stylus
     # Replaces the global load path `Array` of paths.
     def paths=(val)
       @@paths = Array(val)
+    end
+
+    # Returns the `debug` flag used to set the `linenos` option for Stylus.
+    def debug
+      @@debug
+    end
+    alias :debug? :debug
+
+    # Sets the `debug` flag.
+    def debug=(val)
+      @@debug = val
     end
 
     # Returns the global compress flag.
@@ -87,7 +99,7 @@ module Stylus
 
     # Returns the default `Hash` of options.
     def defaults
-      { :compress => self.compress, :paths => self.paths }
+      { :compress => self.compress, :paths => self.paths, :linenos => self.debug? }
     end
 
     # Return the gem version alongside with the current `Stylus` version of your system.
