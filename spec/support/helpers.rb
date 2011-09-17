@@ -21,15 +21,23 @@ module Helpers
     File.expand_path('../../fixtures', __FILE__)
   end
 
+  def output_root
+    File.expand_path('../../cases', __FILE__)
+  end
+
   def fixture(name)
-    %w[.styl .css].map do |format|
-      path = fixture_path(name, format)
+    source = fixture_path(name)
+    output = css_path(name)
+    [source, output].map do |path|
       File.read(path) if File.file?(path)
     end
   end
 
-  def fixture_path(name, format = ".styl")
-    filename = name.to_s + format
-    File.join(fixture_root, filename)
+  def css_path(name)
+    File.join(output_root, "#{name}.css")
+  end
+
+  def fixture_path(name)
+    File.join(fixture_root, "#{name}.styl")
   end
 end
