@@ -22,8 +22,14 @@ module Helpers
   end
 
   def fixture(name)
-    stylus = File.read(File.join(fixture_root, "#{name}.styl"))
-    css    = File.read(File.join(fixture_root, "#{name}.css"))
-    [stylus, css]
+    %w[.styl .css].map do |format|
+      path = fixture_path(name, format)
+      File.read(path) if File.file?(path)
+    end
+  end
+
+  def fixture_path(name, format = ".styl")
+    filename = name.to_s + format
+    File.join(fixture_root, filename)
   end
 end

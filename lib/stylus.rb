@@ -52,7 +52,7 @@ module Stylus
       @@paths = Array(val)
     end
 
-    # Returns the `debug` flag used to set the `linenos` option for Stylus.
+    # Returns the `debug` flag used to set the `linenos` and `firebug` option for Stylus.
     def debug
       @@debug
     end
@@ -91,16 +91,27 @@ module Stylus
     # Returns a `Hash` of the given `options` merged with the default configuration.
     # It also concats the global load path with a given `:paths` option.
     def merge_options(options)
-      _paths = options.delete(:paths)
+      filename = options[:filename]
+
+      _paths  = options.delete(:paths)
       options = defaults.merge(options)
       options[:paths] = paths.concat(Array(_paths))
+      if filename
+        options = options.merge(debug_options)
+      end
       options
     end
 
-    # Returns the default `Hash` of options -
-    # the compress flag, the global load path and the linenos flag.
+    # Returns the default `Hash` of options:
+    # the compress flag and the global load path.
     def defaults
-      { :compress => self.compress, :paths => self.paths, :linenos => self.debug? }
+      { :compress => self.compress, :paths => self.paths }
+    end
+
+    # Returns a Hash with the debug options to pass to
+    # Stylus.
+    def debug_options
+      { :linenos => self.debug?, :firebug => self.debug? }
     end
 
     # Return the gem version alongside with the current `Stylus` version of your system.
