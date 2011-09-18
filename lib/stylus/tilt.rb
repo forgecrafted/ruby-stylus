@@ -16,6 +16,9 @@ module Tilt
     end
 
     def evaluate(scope, locals, &block)
+      if scope.respond_to?(:pathname)
+        options[:filename] ||= scope.pathname.to_s
+      end
       Stylus.compile(data, options)
     end
   end

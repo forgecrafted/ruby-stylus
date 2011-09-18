@@ -8,7 +8,10 @@ module Helpers
 
   def create_app(options = {})
     Rails.application = nil
+    options[:env] ||= :test
+
     Class.new(Rails::Application).tap do |app|
+      Rails.env = options[:env].to_s
       app.config.assets.enabled = true
       app.config.assets.compress = true if options[:compress]
       app.config.assets.paths << fixture_root
