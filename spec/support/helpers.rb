@@ -8,13 +8,14 @@ module Helpers
 
   def create_app(options = {})
     Rails.application = nil
-    options[:env] ||= :test
 
     Class.new(Rails::Application).tap do |app|
-      Rails.env = options[:env].to_s
-      app.config.assets.enabled = true
-      app.config.assets.compress = true if options[:compress]
-      app.config.assets.paths << fixture_root
+      assets = app.config.assets
+      assets.cache_store = :memory_store
+      assets.enabled  = true
+      assets.compress = true if options[:compress]
+      assets.debug    = true if options[:debug]
+      assets.paths << fixture_root
       app.config.active_support.deprecation = :log
       app.initialize!
     end

@@ -21,16 +21,16 @@ describe 'Sprockets and Rails integration' do
     app.assets['import'].to_s.should == result
   end
 
-  it 'provides debug info on development mode' do
-    app = create_app(:env => :development)
-    asset = app.assets['simple']
-    asset.to_s.should match(/line 1 : #{asset.pathname}/)
-  end
-
-  it 'skips debug info on production mode' do
-    app = create_app(:env => :production)
+  it 'skips debug info by default' do
+    app = create_app
     asset = app.assets['simple']
     asset.to_s.should_not match(/line 1 : #{asset.pathname}/)
+  end
+
+  it 'provides debug info if required' do
+    app = create_app(:debug => true)
+    asset = app.assets['simple']
+    asset.to_s.should match(/line 1 : #{asset.pathname}/)
   end
 
   it 'compress the output if Rails is configured to compress them too' do
