@@ -67,6 +67,7 @@ module Stylus
     def compress
       @@compress
     end
+    alias :compress? :compress
 
     # Sets the global flag for the `compress` option.
     def compress=(val)
@@ -111,7 +112,7 @@ module Stylus
     # Returns the default `Hash` of options:
     # the compress flag and the global load path.
     def defaults
-      { :compress => self.compress, :paths => self.paths }
+      { :compress => self.compress?, :paths => self.paths }
     end
 
     # Returns a Hash with the debug options to pass to
