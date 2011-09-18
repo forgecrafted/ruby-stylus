@@ -11,15 +11,18 @@ module Tilt
       defined? ::Stylus
     end
 
-    def prepare
+    def initialize_engine
       require_template_library 'stylus'
     end
 
-    def evaluate(scope, locals, &block)
-      if scope.respond_to?(:pathname)
-        options[:filename] ||= scope.pathname.to_s
+    def prepare
+      if self.file
+        options[:filename] ||= self.file
       end
-      Stylus.compile(data, options)
+    end
+
+    def evaluate(scope, locals, &block)
+      @output ||= Stylus.compile(data, options)
     end
   end
 end
