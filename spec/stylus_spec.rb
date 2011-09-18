@@ -59,20 +59,22 @@ describe Stylus do
 
   describe "The debug flag" do
 
-    let(:file) { fixture_path(:debug) }
-    let(:fixture) { File.read(file) }
+    let(:path) { fixture_path(:debug) }
+    let(:fixture) { File.read(path) }
+    let(:file) { File.new(path) }
+
     before { Stylus.debug = true }
 
     it "turns the 'linenos' option on" do
-      Stylus.compile(fixture, :filename => file).should match(/line 1 : #{file}/)
+      Stylus.compile(file).should match(/line 1 : #{path}/)
     end
 
     it "skips the 'linenos' option if no filename is given" do
-      Stylus.compile(fixture).should_not match(/line 1 : #{file}/)
+      Stylus.compile(fixture).should_not match(/line 1 : #{path}/)
     end
 
     it "turns the 'firebug' option on" do
-      Stylus.compile(fixture, :filename => file).should match(/@media -stylus-debug-info/)
+      Stylus.compile(file).should match(/@media -stylus-debug-info/)
     end
 
     it "skips the 'firebug' option if no filename is given" do

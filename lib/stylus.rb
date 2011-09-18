@@ -73,10 +73,16 @@ module Stylus
       @@compress = val
     end
 
-    # Compiles a given input - a `File`, `StringIO`, `String` or anything that responds to `read`.
-    # Also accepts a hash of options that will be merged with the global configuration.
+    # Compiles a given input - a plain String, `File` or some sort of IO object that
+    # responds to `read`.
+    # It accepts a hash of options that will be merged with the global configuration.
+    # If the source has a `path`, it will be expanded and used as the :filename option
+    # So the debug options can be used.
     def compile(source, options = {})
-      source = source.read if source.respond_to?(:read)
+      if source.respond_to?(:path)
+        options[:filename] ||= File.expand_path(source.path)
+      end
+      source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
       context.call('compiler', source, options, plugins)
     end
