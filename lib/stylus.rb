@@ -80,7 +80,7 @@ module Stylus
     # If the source has a `path`, it will be expanded and used as the :filename option
     # So the debug options can be used.
     def compile(source, options = {})
-      if source.respond_to?(:path)
+      if source.respond_to?(:path) && source.path
         options[:filename] ||= File.expand_path(source.path)
       end
       source  = source.read if source.respond_to?(:read)
