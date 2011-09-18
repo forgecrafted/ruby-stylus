@@ -41,7 +41,9 @@ Stylus.convert(File.new('file.css'))
 # Importing plugins directly from Node.js, like nib.
 Stylus.use :nib
 
-# Enabling debug info, which generate comments on the CSS with the line for the a given selector.
+# Enabling debug info, which sends the 'linenos' and 'firebug' options to Stylus.
+# If you provide a raw content String to the `Stylus.compile` method, remember to send
+# a `:filename` option so Stylus can locate your stylesheet for proper inspection.
 Stylus.debug = true
 ```
 ### With the Rails 3.1 Asset Pipeline.
@@ -51,6 +53,8 @@ Adding `stylus` to your Gemfile should let you work with `.styl` files with the 
 While [Stylus](https://github.com/LearnBoost/stylus) has a `@import` directive, inside a Rails application you should use the `//= require` directive from Sprockets, so the caching mechanism will look after the changes made on the required file. If you're using mixins (for vendor prefixes or any common statements) or plugins inside your `.styl` files, you should use [Stylus](https://github.com/LearnBoost/stylus) `@import` **and** Sprockets `//= depend_on`. The latter is to ensure the proper dependency management on the Sprockets side.
 
 Any `.styl` file on the Sprockets load path (`app/assets`, `lib/assets`, `vendor/assets` or `assets` folder inside any other gem) will be available via the `@import` directive.
+
+If the `config.assets.debug` is turned on, Stylus will emit exta comments on your stylesheets to help debugging and inspection using the `linenos` and `firebug` options. Check the [FireStylus extension for Firebug](https://github.com/LearnBoost/stylus/blob/master/docs/firebug.md) for more info.
 
 ## Plugins
 
