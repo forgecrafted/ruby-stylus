@@ -60,6 +60,12 @@ describe Stylus do
 
   it "includes the given plugins" do
     Stylus.use :nib
+    input, output = fixture :plugin
+    Stylus.compile(input).should == output
+  end
+
+  it "includes and imports 'nib' automatically" do
+    Stylus.nib = true
     input, output = fixture :nib
     Stylus.compile(input).should == output
   end

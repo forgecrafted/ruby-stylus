@@ -68,6 +68,14 @@ module Stylus
     end
     alias :debug? :debug
 
+    # Marks the `nib` plugin to be loaded and included on every stylesheet.
+    def nib=(flag)
+      if flag
+        use :nib
+        import :nib
+      end
+    end
+
     # Sets the `debug` flag.
     def debug=(val)
       @@debug = val
