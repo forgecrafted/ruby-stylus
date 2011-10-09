@@ -2,4 +2,5 @@ before_script: "npm install stylus nib"
 rvm:
   - ree
   - 1.9.2
+  - 1.9.3
   - rbx-2.0
