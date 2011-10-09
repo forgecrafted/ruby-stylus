@@ -21,5 +21,6 @@ RSpec.configure do |config|
     Stylus.debug = false
     Stylus.paths = []
     Stylus.plugins.clear
+    Stylus.imports.clear
   end
 end

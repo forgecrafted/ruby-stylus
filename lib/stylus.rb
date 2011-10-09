@@ -26,6 +26,7 @@ module Stylus
     @@compress = false
     @@debug    = false
     @@paths    = []
+    @@imports  = []
     @@plugins  = {}
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
@@ -36,6 +37,15 @@ module Stylus
       end
     end
     alias :plugin :use
+
+    # Stores a list of stylesheets to import on every compile process.
+    def import(*paths)
+      if paths.any?
+      @@imports = @@imports.concat(paths)
+    end
+    @@imports
+  end
+  alias :imports :import
 
     # Retrieves all the registered plugins.
     def plugins
@@ -85,7 +95,7 @@ module Stylus
       end
       source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      context.call('compiler', source, options, plugins)
+      context.call('compiler', source, options, plugins, imports)
     end
 
     # Converts back an input of plain CSS to the `Stylus` syntax. The source object can be

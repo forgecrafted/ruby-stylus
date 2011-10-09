@@ -37,6 +37,13 @@ describe Stylus do
     Stylus.compile(input).should == output
   end
 
+  it 'implicit imports the given paths' do
+    path = File.expand_path('mixins/vendor.styl', fixture_root)
+    input, output = fixture :implicit
+    Stylus.import path
+    Stylus.compile(input).should == output
+  end
+
   it "outputs both gem and library version" do
     Stylus.version.should =~ /Stylus - gem .+ library .+/
   end
