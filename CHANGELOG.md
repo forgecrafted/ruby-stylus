@@ -1,9 +1,11 @@
 ## Changelog
 
-### 0.3.0 (Master)
+### 0.3.0
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.2...master)
 
-* Adds a `debug` configuration option, that enables the `linenos` and `firebug` flags on Stylus. Inside Rails, this configuration option will be copied from the `config.assets.debug`.
+* Added a `debug` configuration option, that enables the `linenos` and `firebug` flags on Stylus. Inside Rails, this configuration option will be copied from the `config.assets.debug`;
+* Added a global array `import` that handles other stylesheets to include on every compilation process;
+* Added a shorthand `Stylus.nib = true` to use the plugin and import it on every processed stylesheet.
 
 ### 0.2.2 (2011-09-14)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.1...v0.2.2)
