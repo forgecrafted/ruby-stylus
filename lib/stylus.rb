@@ -2,7 +2,7 @@ require 'execjs'
 require 'stylus/version'
 require 'stylus/tilt' if defined?(::Tilt)
 require 'stylus/railtie' if defined?(::Rails)
-
+require 'stylus/source'
 ## Stylus
 #
 # `stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus)
@@ -152,7 +152,8 @@ module Stylus
 
     # Reads the default compiler script that `ExecJS` will execute.
     def script
-      File.read(File.expand_path('../stylus/compiler.js',__FILE__))
+      source = File.read(File.expand_path('../stylus/compiler.js',__FILE__))
+      source.sub('#{bundled_path}', File.dirname(Stylus::Source.bundled_path))
     end
 
     # `ExecJS` 1.2.5+ doesn't support `require` statements on node anymore,
