@@ -152,8 +152,7 @@ module Stylus
 
     # Reads the default compiler script that `ExecJS` will execute.
     def script
-      source = File.read(File.expand_path('../stylus/compiler.js',__FILE__))
-      source.sub('#{bundled_path}', File.dirname(Stylus::Source.bundled_path))
+      File.read(File.expand_path('../stylus/compiler.js',__FILE__))
     end
 
     # `ExecJS` 1.2.5+ doesn't support `require` statements on node anymore,
@@ -165,9 +164,13 @@ module Stylus
         :runner_path => File.expand_path("../stylus/runner.js", __FILE__)
         )
     end
+
+    def bundled_path
+      File.dirname(Stylus::Source.bundled_path)
+    end
   end
 
   # Exports the `.node_modules` folder on the working directory so npm can
   # require modules installed locally.
-  ENV['NODE_PATH'] = "#{File.expand_path('node_modules')}:#{ENV['NODE_PATH']}"
+  ENV['NODE_PATH'] = "#{File.expand_path('node_modules')}:#{bundled_path}:#{ENV['NODE_PATH']}"
 end
