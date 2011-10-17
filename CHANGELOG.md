@@ -1,8 +1,9 @@
 ## Changelog
 
-### 0.3.0
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.2...master)
+### 0.3.0 (2011-10-17)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.2...v.0.30)
 
+* This gem now uses the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) gem to bundle the latest [NPM](http://search.npmjs.org/#/stylus) package of Stylus, so there's no setup required to install stylus via `npm install` or cloning it into the `node_modules` folder - Thanks @railsjedi.
 * Added a `debug` configuration option, that enables the `linenos` and `firebug` flags on Stylus. Inside Rails, this configuration option will be copied from the `config.assets.debug`;
 * Added a global array `import` that handles other stylesheets to include on every compilation process;
 * Added a shorthand `Stylus.nib = true` to use the plugin and import it on every processed stylesheet.

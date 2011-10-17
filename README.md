@@ -6,17 +6,11 @@
 
 ## Installation
 
-Be sure to have [node.js](http://nodejs.org) available on your system, and [npm](npmjs.org) to install the [Stylus](https://github.com/LearnBoost/stylus) package (but you can also do a manual installation).
+Since version 0.3.0, the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) packages the Stylus source into a Rubygems, so it will be available after installing this gem. The `ruby-source` version will follow the Stylus releases and their versions.
 
-### With npm
+You can replace the Stylus code by placing another version of Stylus on `./node_modules/stylus`, and it will be used instead of the version bundled inside the gem.
 
-You can make a local install (inside your application folder, so the package will be at `./node_modules`) or a global one (with the `-g` flag). With a global install you will need to make sure that the global installation folder is present at the `NODE_PATH` env variable. A global install will also enable the [Stylus](https://github.com/LearnBoost/stylus) command line interface.
-
-### Manual
-
-You can clone Stylus [git repository](http://github.com/learnboost/stylus) into `node_modules/stylus`. Any `node` commands and/or shells from the current directory will be able to find the cloned package.
-
-Check your installation with `node -e "require('stylus')"`. It should print something like [this](https://gist.github.com/1182631) and exit successfully.
+**But remember**, You still need the `node` command available on your runtime for this gem to work. `stylus` is also compatible with the Heroku Cedar stack, enabling the asset compilation during the deployment of your apps.
 
 ## Usage
 
