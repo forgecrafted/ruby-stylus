@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Bridge library to compile .styl stylesheets from ruby code.}
 
   s.add_dependency 'execjs'
-  # s.add_dependency 'stylus-source'
+  s.add_dependency 'stylus-source'
   s.add_development_dependency 'rspec',       '~> 2.0'
   s.add_development_dependency 'railties',    '~> 3.1.0'
   s.add_development_dependency 'tzinfo'
