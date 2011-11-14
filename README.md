@@ -42,6 +42,8 @@ Stylus.debug = true
 ```
 ### With the Rails 3.1 Asset Pipeline.
 
+First of all, remember to add `gem 'stylus'` to your Gemfile inside the `:assets` group, So Rails will require the gem according to your current environment - on production you should serve precompiled versions of your assets instead of compiling on the fly.
+
 Adding `stylus` to your Gemfile should let you work with `.styl` files with the Rails 3.1 Pipeline. Any asset generated with `rails generate` will be created with a `.css.styl` extension.
 
 While [Stylus](https://github.com/LearnBoost/stylus) has a `@import` directive, inside a Rails application you should use the `//= require` directive from Sprockets, so the caching mechanism will look after the changes made on the required file. If you're using mixins (for vendor prefixes or any common statements) or plugins inside your `.styl` files, you should use [Stylus](https://github.com/LearnBoost/stylus) `@import` **and** Sprockets `//= depend_on`. The latter is to ensure the proper dependency management on the Sprockets side.

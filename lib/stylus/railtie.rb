@@ -7,7 +7,7 @@ module Stylus
 
     config.app_generators.stylesheet_engine :stylus
 
-    initializer :setup_stylus do |app|
+    initializer :setup_stylus, :after => 'sprockets.environment' do |app|
       app.assets.register_engine '.styl', Tilt::StylusTemplate
     end
 
