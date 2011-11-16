@@ -43,8 +43,8 @@ module Generators
     module InstanceMethods
 
       def file(relative)
-         File.expand_path(relative, destination_root)
-       end
+        File.expand_path(relative, destination_root)
+      end
 
       def method_missing(method_sym, *arguments, &block)
         self.test_case_instance.send(method_sym, *arguments, &block)

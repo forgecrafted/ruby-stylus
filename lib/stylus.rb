@@ -41,11 +41,11 @@ module Stylus
     # Stores a list of stylesheets to import on every compile process.
     def import(*paths)
       if paths.any?
-      @@imports = @@imports.concat(paths)
-    end
+        @@imports = @@imports.concat(paths)
+      end
     @@imports
-  end
-  alias :imports :import
+    end
+    alias :imports :import
 
     # Retrieves all the registered plugins.
     def plugins
