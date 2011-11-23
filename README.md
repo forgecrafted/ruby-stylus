@@ -46,11 +46,20 @@ First of all, remember to add `gem 'stylus'` to your Gemfile inside the `:assets
 
 Adding `stylus` to your Gemfile should let you work with `.styl` files with the Rails 3.1 Pipeline. Any asset generated with `rails generate` will be created with a `.css.styl` extension.
 
-Any `@import` directive will add the stylesheet as a sprockets dependency, so you can update external libraries and it will reflect on your assets fingerprints.
-
-Any `.styl` file on the Sprockets load path (`app/assets`, `lib/assets`, `vendor/assets` or `assets` folder inside any other gem) can be imported into your stylesheet.
+Any `@import` directive will add the stylesheet as a sprockets dependency, so you can update external libraries and it will reflect on your assets fingerprints. Also, the Sprockets laod path (usually `app/assets`, `lib/assets`, `vendor/assets` and the `assets` folder inside any other gem) will be available to your stylesheets.
 
 If the `config.assets.debug` is turned on, Stylus will emit exta comments on your stylesheets to help debugging and inspection using the `linenos` and `firebug` options. Check the [FireStylus extension for Firebug](https://github.com/LearnBoost/stylus/blob/master/docs/firebug.md) for more info.
+
+### `@import` and file extensions.
+
+Stylus and Sprockets file lookup differ on the subject of handling file extensions, and that may hurt a bit.
+
+If you use Stylus `@import` to expose variables, mixins or just to concatenate code, you should use only the `.styl` extension on your imported files. If you use the `.css.styl` form (a convention from Sprockets), Stylus will treat it as a plain CSS file since it has `.css` on its name.
+
+```sass
+// imports the mixins.styl
+@import 'mixins'
+```
 
 ## Plugins
 
