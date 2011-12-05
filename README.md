@@ -1,6 +1,7 @@
 # Ruby Stylus
 
 [![Build Status](https://secure.travis-ci.org/lucasmazza/ruby-stylus.png)](http://travis-ci.org/lucasmazza/ruby-stylus)
+[![Dependencies](https://gemnasium.com/lucasmazza/ruby-stylus.png?travis)](https://gemnasium.com/lucasmazza/ruby-stylus)
 
 `stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on [node.js](http://nodejs.org). It has support for the Rails 3.1 asset pipeline (thanks to a [Tilt](https://github.com/rtomayko/tilt) Template) and it's backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
 
