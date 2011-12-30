@@ -11,7 +11,7 @@ Since version 0.3.0, the [stylus-source](https://github.com/railsjedi/ruby-stylu
 
 You can replace the Stylus code by placing another version of Stylus on `./node_modules/stylus`, and it will be used instead of the version bundled inside the gem.
 
-**But remember**, You still need the `node` command available on your runtime for this gem to work. `stylus` is also compatible with the Heroku Cedar stack, enabling the asset compilation during the deployment of your apps.
+**But remember**, You still need the `node` command available on your runtime for this gem to work. `stylus` is also compatible with the Heroku Cedar stack, enabling the asset compilation during the deployment of your apps. You can check the [Node.js wiki](https://github.com/joyent/node/wiki/Quick-and-easy-installation) for more info.
 
 ## Usage
 
