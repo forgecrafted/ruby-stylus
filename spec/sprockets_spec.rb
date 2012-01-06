@@ -39,4 +39,10 @@ describe 'Sprockets and Rails integration' do
     app = create_app(:compress => true)
     app.assets['compressed'].to_s.should == result
   end
+
+  it 'loads the app normally even when the asset pipeline is disabled' do
+    expect {
+      create_app(:enabled => false)
+    }.to_not raise_error
+  end
 end

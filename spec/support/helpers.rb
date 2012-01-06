@@ -12,7 +12,7 @@ module Helpers
     Class.new(Rails::Application).tap do |app|
       assets = app.config.assets
       assets.cache_store = :memory_store
-      assets.enabled  = true
+      assets.enabled  = options.fetch(:enabled, true)
       assets.compress = true if options[:compress]
       assets.debug    = true if options[:debug]
       assets.paths << fixture_root
