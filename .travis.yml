@@ -1,4 +1,5 @@
 before_script: "npm install nib"
+before_install: gem update --system
 rvm:
   - ree
   - 1.9.3
