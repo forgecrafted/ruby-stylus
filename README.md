@@ -80,7 +80,7 @@ stylus(file).use(fingerprint({literal:'caa8c262e23268d2a7062c6217202343b84f472b'
 
 You can [submit an issue](https://github.com/lucasmazza/ruby-stylus/issues) or ping me at [GitHub](http://github.com/lucasmazza) or [twitter](http://twitter.com/lucasmazza).
 
-For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax and it's features you can check the [project repository](https://github.com/learnboost/stylus) and [GitHub page](learnboost.github.com/stylus).
+For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax and it's features you can check the [project repository](https://github.com/learnboost/stylus) and the docs on the [GitHub page](http://learnboost.github.com/stylus).
 
 ## Changelog
 [It's available here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
