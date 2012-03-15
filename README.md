@@ -7,15 +7,15 @@
 
 ## Installation
 
-Since version 0.3.0, the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) packages the Stylus source into a Rubygems, so it will be available after installing this gem. The `ruby-source` version will follow the Stylus releases and their versions.
+Since version 0.3.0, the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) packages the Stylus source into a Rubygem, so it will be available after installing this gem. The `ruby-source` version will follow the Stylus releases and their versions.
 
 You can replace the Stylus code by placing another version of Stylus on `./node_modules/stylus`, and it will be used instead of the version bundled inside the gem.
 
-**But remember**, You still need the `node` command available on your runtime for this gem to work. `stylus` is also compatible with the Heroku Cedar stack, enabling the asset compilation during the deployment of your apps. You can check the [Node.js wiki](https://github.com/joyent/node/wiki/Quick-and-easy-installation) for more info.
+**But remember**, you still need the `node` command available on your runtime for this gem to work. `stylus` is also compatible with the Heroku Cedar stack, enabling asset compilation during the deployment of your apps. You can check the [Node.js wiki](https://github.com/joyent/node/wiki/Quick-and-easy-installation) for more info.
 
 ## Usage
 
-The interaction is done by the `Stylus` module. You can compile stylus syntax to CSS, convert it back, enable plugins and tweak some other options:
+The interaction is done by the `Stylus` module. You can compile Stylus syntax to CSS, convert it back, enable plugins and tweak some other options:
 
 ```ruby
 require 'stylus'
@@ -23,20 +23,20 @@ require 'stylus'
 # Accepts a raw string or an IO object (File, StringIO or anything that responds to 'read').
 Stylus.compile(File.new('application.styl')) # returns the compiled stylesheet.
 
-# Using the compress option, removing most newlines from the code.
+# Use the :compress option, removing most newlines from the code.
 Stylus.compile(File.read('application.styl'), :compress => true)
 
 # Or use the global compress flag
 Stylus.compress = true
 Stylus.compile(File.read('application.styl'))
 
-# Converting old and boring CSS to awesome Stylus.
+# Convert old and boring CSS to awesome Stylus.
 Stylus.convert(File.new('file.css'))
 
-# Importing plugins directly from Node.js, like nib.
+# Import plugins directly from Node.js, like nib.
 Stylus.use :nib
 
-# Enabling debug info, which sends the 'linenos' and 'firebug' options to Stylus.
+# Enable debug info, which sends the 'linenos' and 'firebug' options to Stylus.
 # If you provide a raw content String to the `Stylus.compile` method, remember to send
 # a `:filename` option so Stylus can locate your stylesheet for proper inspection.
 Stylus.debug = true
@@ -47,40 +47,40 @@ First of all, remember to add `gem 'stylus'` to your Gemfile inside the `:assets
 
 Adding `stylus` to your Gemfile should let you work with `.styl` files with the Rails 3.1 Pipeline. Any asset generated with `rails generate` will be created with a `.css.styl` extension.
 
-Any `@import` directive will add the stylesheet as a sprockets dependency, so you can update external libraries and it will reflect on your assets fingerprints. Also, the Sprockets laod path (usually `app/assets`, `lib/assets`, `vendor/assets` and the `assets` folder inside any other gem) will be available to your stylesheets.
+Any `@import` directive will add the stylesheet as a sprockets dependency, so you can update external libraries and it will reflect on your assets fingerprints. Also, the Sprockets load path (usually `app/assets`, `lib/assets`, `vendor/assets` and the `assets` folder inside any other gem) will be available to your stylesheets.
 
-If the `config.assets.debug` is turned on, Stylus will emit exta comments on your stylesheets to help debugging and inspection using the `linenos` and `firebug` options. Check the [FireStylus extension for Firebug](https://github.com/LearnBoost/stylus/blob/master/docs/firebug.md) for more info.
+If the `config.assets.debug` is turned on, Stylus will emit extra comments on your stylesheets to help debugging and inspection using the `linenos` and `firebug` options. Check the [FireStylus extension for Firebug](https://github.com/LearnBoost/stylus/blob/master/docs/firebug.md) for more info.
 
 ### `@import` and file extensions.
 
-Stylus and Sprockets file lookup differ on the subject of handling file extensions, and that may hurt a bit.
+Stylus and Sprockets file lookups differ on the subject of handling file extensions, and that may hurt a bit.
 
 If you use Stylus `@import` to expose variables, mixins or just to concatenate code, you should use only the `.styl` extension on your imported files. If you use the `.css.styl` form (a convention from Sprockets), Stylus will treat it as a plain CSS file since it has `.css` on its name.
 
 ```sass
-// imports the mixins.styl
+// imports mixins.styl
 @import 'mixins'
 ```
 
 ## Plugins
 
-[Stylus](https://github.com/LearnBoost/stylus) exposes a nice API to create plugins written on [node.js](http://nodejs.org), like [nib](https://github.com/visionmedia/nib). The installation process should be same as described above for [Stylus](https://github.com/LearnBoost/stylus) (since they're all npm packages after all). You can hook them'up on your Ruby code with `Stylus.use`:
+[Stylus](https://github.com/LearnBoost/stylus) exposes a nice API to create plugins written on [node.js](http://nodejs.org), like [nib](https://github.com/visionmedia/nib). The installation process should be the same as described above for [Stylus](https://github.com/LearnBoost/stylus) (since they're all npm packages after all). You can hook them up on your Ruby code with `Stylus.use`:
 
 ```ruby
 Stylus.use :fingerprint, :literal => 'caa8c262e23268d2a7062c6217202343b84f472b'
 ```
 
-Will run something like this on javascript:
+Will run something like this in JavaScript:
 
 ```javascript
 stylus(file).use(fingerprint({literal:'caa8c262e23268d2a7062c6217202343b84f472b'}));
 ```
 
-## Question, Bugs or Support
+## Questions, Bugs or Support
 
-You can [submit an issue](https://github.com/lucasmazza/ruby-stylus/issues) or ping me at [GitHub](http://github.com/lucasmazza) or [twitter](http://twitter.com/lucasmazza).
+You can [submit an issue](https://github.com/lucasmazza/ruby-stylus/issues) or ping me on [GitHub](http://github.com/lucasmazza) or [Twitter](http://twitter.com/lucasmazza).
 
-For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax and it's features you can check the [project repository](https://github.com/learnboost/stylus) and the docs on the [GitHub page](http://learnboost.github.com/stylus).
+For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax and its features you can check the [project repository](https://github.com/learnboost/stylus) and the docs on the [GitHub page](http://learnboost.github.com/stylus).
 
 ## Changelog
 [It's available here.](https://github.com/lucasmazza/ruby-stylus/blob/master/CHANGELOG.md)
