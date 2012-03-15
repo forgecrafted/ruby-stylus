@@ -3,4 +3,3 @@ before_install: gem update --system
 rvm:
   - ree
   - 1.9.3
-  - rbx-2.0
