@@ -1,11 +1,14 @@
 ## Changelog
 
+### 0.4.2 (2012-03-24)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.1...v.0.4.2)
+
+* Tells Rails to always run the Railtie initializer.
+
 ### 0.4.1 (2012-01-06)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.0...v.0.4.1)
 
 * Skips Sprockets configuration if `config.assets.enabled` isn't true.
-
-
 
 ### 0.4.0 (2011-11-23)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.3.0...v.0.4.0)
