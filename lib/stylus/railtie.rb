@@ -9,7 +9,7 @@ module Stylus
 
     config.app_generators.stylesheet_engine :stylus
 
-    initializer :setup_stylus, :after => 'sprockets.environment' do |app|
+    initializer :setup_stylus, :after => 'sprockets.environment', :group => :all do |app|
       if app.config.assets.enabled
         app.assets.register_engine '.styl', Tilt::StylusTemplate
         app.assets.register_preprocessor 'text/css', Stylus::ImportProcessor
