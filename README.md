@@ -41,7 +41,7 @@ Stylus.use :nib
 # a `:filename` option so Stylus can locate your stylesheet for proper inspection.
 Stylus.debug = true
 ```
-### With the Rails 3.1 Asset Pipeline.
+### With Rails 3 and the Asset Pipeline.
 
 First of all, remember to add `gem 'stylus'` to your Gemfile inside the `:assets` group, So Rails will require the gem according to your current environment - on production you should serve precompiled versions of your assets instead of compiling on the fly.
 

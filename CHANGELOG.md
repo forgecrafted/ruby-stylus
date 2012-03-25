@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.5.0 (Master)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.2...v.0.5.0)
+
+* Rewrite of the Railtie initializers to match 3.2 loading order;
+* Only folders ending with `stylesheets` will be copied over to `Stylus.paths`.
+
 ### 0.4.2 (2012-03-24)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.1...v.0.4.2)
 
