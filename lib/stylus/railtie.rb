@@ -22,10 +22,11 @@ module Stylus
     # `.styl` file inside it can be imported by the `Stylus` API.
     initializer 'stylus.config', :after => :append_assets_path, :group => :all do |app|
       sprockets = app.config.assets
+      paths     = sprockets.paths.select { |dir| dir.to_s.ends_with?('stylesheets') }
       if sprockets.enabled
         Stylus.compress = sprockets.compress
         Stylus.debug    = sprockets.debug
-        Stylus.paths.concat sprockets.paths
+        Stylus.paths.concat paths
       end
     end
   end

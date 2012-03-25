@@ -16,13 +16,14 @@ module Helpers
       assets.compress = true if options[:compress]
       assets.debug    = true if options[:debug]
       assets.paths << fixture_root
+      assets.paths << File.expand_path('javascripts')
       app.config.active_support.deprecation = :log
       app.initialize!
     end
   end
 
   def fixture_root
-    File.expand_path('../../fixtures', __FILE__)
+    File.expand_path('../../stylesheets', __FILE__)
   end
 
   def output_root

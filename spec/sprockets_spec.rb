@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe 'Sprockets and Rails integration' do
 
-  it 'copies the asset paths into the Stylus load path' do
+  it "copies the folders ending with 'stylesheets' from the Sprockets load path" do
     app = create_app
-    Stylus.paths.should =~ app.assets.paths
+    Stylus.paths.should == [fixture_root]
+    Stylus.paths.should_not == app.assets.paths
   end
 
   it 'process .styl files with the asset pipeline' do
