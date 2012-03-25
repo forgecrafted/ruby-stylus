@@ -89,7 +89,7 @@ For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax an
 
 (The MIT License)
 
-Copyright (c) 2011 Lucas Mazza &lt;luc4smazza@gmail.com&gt;
+Copyright (c) 2012 Lucas Mazza &lt;luc4smazza@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
