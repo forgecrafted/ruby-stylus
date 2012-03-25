@@ -1,6 +1,7 @@
 *.gem
 node_modules
 .bundle
+gemfiles/*.lock
 Gemfile.lock
 pkg/*
 docs
