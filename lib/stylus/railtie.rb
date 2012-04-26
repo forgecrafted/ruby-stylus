@@ -1,5 +1,4 @@
-require 'stylus/tilt'
-require 'stylus/import_processor'
+require 'stylus/sprockets'
 
 module Stylus
   ### Stylus Railtie
@@ -11,8 +10,7 @@ module Stylus
 
     initializer 'stylus.register', :after => 'sprockets.environment', :group => :all do |app|
       if app.config.assets.enabled
-        app.assets.register_engine '.styl', Tilt::StylusTemplate
-        app.assets.register_preprocessor 'text/css', Stylus::ImportProcessor
+        Stylus::Sprockets.register(app.assets)
       end
     end
 

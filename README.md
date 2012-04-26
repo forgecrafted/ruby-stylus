@@ -62,6 +62,27 @@ If you use Stylus `@import` to expose variables, mixins or just to concatenate c
 @import 'mixins'
 ```
 
+### Standalone Sprockets usage
+
+If you're using Sprockets outside Rails, on Sinatra or on a plain Rack app, you can wire up Stylus inside a instance of `Sprockets::Environment` using `Stylus::Sprockets.register`.
+
+An example of serving stylesheets from `./stylesheets` using just Sprockets and Rack.
+
+```ruby
+require 'sprockets'
+require 'stylus'
+require 'stylus/sprockets'
+
+# Serve your stylesheets living on ./stylesheets
+assets = Sprockets::Environment.new
+assets.append_path('stylesheets')
+
+Stylus::Sprockets.register(assets)
+
+# Run the Sprockets Rack!
+map('/assets') { run assets }
+```
+
 ## Plugins
 
 [Stylus](https://github.com/LearnBoost/stylus) exposes a nice API to create plugins written on [node.js](http://nodejs.org), like [nib](https://github.com/visionmedia/nib). The installation process should be the same as described above for [Stylus](https://github.com/LearnBoost/stylus) (since they're all npm packages after all). You can hook them up on your Ruby code with `Stylus.use`:
