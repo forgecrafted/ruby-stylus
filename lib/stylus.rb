@@ -1,6 +1,6 @@
-require 'execjs'
 require 'stylus/version'
 require 'stylus/sprockets'
+require 'stylus/runtime'
 require 'stylus/tilt' if defined?(::Tilt)
 require 'stylus/railtie' if defined?(::Rails)
 require 'stylus/source'
@@ -23,6 +23,7 @@ require 'stylus/source'
 # `Stylus.compile(File.read('application.styl'), :compress => true)`
 #
 module Stylus
+  extend Runtime
   class << self
     @@compress = false
     @@debug    = false
@@ -104,14 +105,14 @@ module Stylus
       end
       source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      context.call('compiler', source, options, plugins, imports)
+      exec('compiler', source, options, plugins, imports)
     end
 
     # Converts back an input of plain CSS to the `Stylus` syntax. The source object can be
     #  a `File`, `StringIO`, `String` or anything that responds to `read`.
     def convert(source)
       source = source.read if source.respond_to?(:read)
-      context.call('convert', source)
+      exec('convert', source)
     end
 
     # Returns a `Hash` of the given `options` merged with the default configuration.
@@ -142,30 +143,10 @@ module Stylus
 
     # Return the gem version alongside with the current `Stylus` version of your system.
     def version
-      "Stylus - gem #{VERSION} library #{context.call('version')}"
+      "Stylus - gem #{VERSION} library #{exec('version')}"
     end
 
     protected
-    # Returns the `ExecJS` execution context.
-    def context
-      @@_context ||= backend.compile(script)
-    end
-
-    # Reads the default compiler script that `ExecJS` will execute.
-    def script
-      File.read(File.expand_path('../stylus/compiler.js',__FILE__))
-    end
-
-    # `ExecJS` 1.2.5+ doesn't support `require` statements on node anymore,
-    # so we use a new instance of the `ExternalRuntime` with the old runner script.
-    def backend
-      @@_backend ||= ExecJS::ExternalRuntime.new(
-        :name        => 'Node.js (V8)',
-        :command     => ["nodejs", "node"],
-        :runner_path => File.expand_path("../stylus/runner.js", __FILE__)
-        )
-    end
-
     def bundled_path
       File.dirname(Stylus::Source.bundled_path)
     end
