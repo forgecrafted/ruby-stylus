@@ -7,6 +7,7 @@ require 'action_controller/railtie'
 require 'sprockets'
 require 'sprockets/railtie'
 require 'stylus/railtie'
+require 'stylus'
 
 require 'active_support/core_ext/class/attribute_accessors'
 
