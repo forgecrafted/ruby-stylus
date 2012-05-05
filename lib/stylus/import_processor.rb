@@ -11,9 +11,10 @@ module Stylus
       dependencies = data.scan(IMPORT_SCANNER).flatten.compact.uniq
 
       dependencies.each do |path|
-        asset = context.environment[path]
+        asset = context.resolve(path, :content_type => 'text/css')
+
         if asset
-          context.depend_on_asset(asset.pathname)
+          context.depend_on(asset)
         end
       end
       data
