@@ -41,6 +41,12 @@ describe 'Sprockets and Rails integration' do
     app.assets['compressed'].to_s.should == result
   end
 
+  it "share variables between imported stylesheets" do
+    result = fixture(:variables).last
+
+    app = create_app
+    app.assets['variables'].to_s.should == result
+  end
   it 'loads the app normally even when the asset pipeline is disabled' do
     expect {
       create_app(:enabled => false)

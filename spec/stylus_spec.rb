@@ -1,4 +1,3 @@
-require 'stylus'
 require 'spec_helper'
 
 describe Stylus do
@@ -68,6 +67,13 @@ describe Stylus do
     Stylus.nib = true
     input, output = fixture :nib
     Stylus.compile(input).should == output
+  end
+
+  it "share variables between imported stylesheets" do
+    input, output = fixture :variables
+    path = fixture_root
+
+    Stylus.compile(input, :paths => path).should == output
   end
 
   describe "The debug flag" do
