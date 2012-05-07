@@ -1,6 +1,11 @@
 ## Changelog
 
-### 0.5.0 (Master)
+### 0.5.1 (2012-05-07)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.0...v.0.5.1)
+
+* Fixes the `ImportProcessor` so it doesn't evaluates the stylesheets.
+
+### 0.5.0 (2012-03-26)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.2...v.0.5.0)
 
 * Rewrite of the Railtie initializers to match 3.2 loading order;
