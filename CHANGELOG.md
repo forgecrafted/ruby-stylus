@@ -1,33 +1,33 @@
 ## Changelog
 
 ### 0.5.1 (2012-05-07)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.0...v.0.5.1)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.0...v0.5.1)
 
 * Fixes the `ImportProcessor` so it doesn't evaluates the stylesheets.
 
 ### 0.5.0 (2012-03-26)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.2...v.0.5.0)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.2...v0.5.0)
 
 * Rewrite of the Railtie initializers to match 3.2 loading order;
 * Only folders ending with `stylesheets` will be copied over to `Stylus.paths`.
 
 ### 0.4.2 (2012-03-24)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.1...v.0.4.2)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.1...v0.4.2)
 
 * Tells Rails to always run the Railtie initializer.
 
 ### 0.4.1 (2012-01-06)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.0...v.0.4.1)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.4.0...v0.4.1)
 
 * Skips Sprockets configuration if `config.assets.enabled` isn't true.
 
 ### 0.4.0 (2011-11-23)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.3.0...v.0.4.0)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.3.0...v0.4.0)
 
 * `@import` directives will be added as dependencies to Sprockets (based on the work by @metaskills on the less-rails).
 
 ### 0.3.0 (2011-10-17)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.2...v.0.3.0)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.2.2...v0.3.0)
 
 * This gem now uses the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) gem to bundle the latest [NPM](http://search.npmjs.org/#/stylus) package of Stylus, so there's no setup required to install stylus via `npm install` or cloning it into the `node_modules` folder - Thanks @railsjedi.
 * Added a `debug` configuration option, that enables the `linenos` and `firebug` flags on Stylus. Inside Rails, this configuration option will be copied from the `config.assets.debug`;
