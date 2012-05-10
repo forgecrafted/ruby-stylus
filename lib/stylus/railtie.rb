@@ -1,6 +1,4 @@
 require 'stylus'
-require 'stylus/sprockets'
-
 module Stylus
   ### Stylus Railtie
   #
