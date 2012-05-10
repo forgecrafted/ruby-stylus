@@ -1,24 +1,36 @@
 require 'execjs'
 
 module Stylus
+  # Internal: Module responsible for the ExecJS interaction.
   module Runtime
+    # Internal: Calls a specific function on the Node.JS context.
+    #
+    # Example
+    #  exec('String.prototype.toString', 2)
+    #  # => "2"
+    #
+    # Returns The function returned value.
     def exec(*arguments)
       context.call(*arguments)
     end
 
     private
-    # Returns the `ExecJS` execution context.
+    # Internal: Compile the Stylus compilation script into a execution context
+    # to execute functions into.
+    #
+    # Returns the compiled context.
     def context
       @context ||= backend.compile(script)
     end
 
-    # Reads the default compiler script that `ExecJS` will execute.
+    # Internal: The custom compilation script body.
     def script
       File.read(File.expand_path('../runtime/compiler.js',__FILE__))
     end
 
-    # `ExecJS` 1.2.5+ doesn't support `require` statements on node anymore,
-    # so we use a new instance of the `ExternalRuntime` with the old runner script.
+    # Internal: Create the ExecJS external runtime with a old runner script that
+    # maintains the state of 'require', so we can use it to load modules like on
+    # any Node.JS program.
     def backend
       @backend ||= ExecJS::ExternalRuntime.new(
         :name        => 'Node.js (V8)',
