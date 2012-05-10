@@ -1,49 +1,31 @@
 require 'spec_helper'
 
-describe 'Sprockets and Rails integration' do
+describe "Sprockets setup" do
+  let(:env) do
+    Sprockets::Environment.new do |assets|
+      assets.append_path fixture_root
+      assets.append_path 'javascripts'
+    end
+  end
 
-  it "copies the folders ending with 'stylesheets' from the Sprockets load path" do
-    app = create_app
+  it "register the Tilt engine" do
+    env.should_receive(:register_engine).with('.styl', Tilt::StylusTemplate)
+    Stylus.setup(env)
+  end
+
+  it "register the import processor" do
+    env.should_receive(:register_preprocessor).with('text/css', Stylus::ImportProcessor)
+    Stylus.setup(env)
+  end
+
+  it "copies the 'stylesheets' paths" do
+    Stylus.setup(env)
     Stylus.paths.should == [fixture_root]
-    Stylus.paths.should_not == app.assets.paths
   end
 
-  it 'process .styl files with the asset pipeline' do
-    result = fixture(:simple).last
-
-    app = create_app
-    app.assets['simple'].to_s.should == result
-  end
-
-  it 'enables @import definitions' do
-    result = fixture(:import).last
-
-    app = create_app
-    app.assets['import'].to_s.should == result
-  end
-
-  it 'skips debug info by default' do
-    app = create_app
-    asset = app.assets['simple']
-    asset.to_s.should_not match(/line 1 : #{asset.pathname}/)
-  end
-
-  it 'provides debug info if required' do
-    app = create_app(:debug => true)
-    asset = app.assets['simple']
-    asset.to_s.should match(/line 1 : #{asset.pathname}/)
-  end
-
-  it 'compress the output if Rails is configured to compress them too' do
-    result = fixture(:compressed).last
-
-    app = create_app(:compress => true)
-    app.assets['compressed'].to_s.should == result
-  end
-
-  it 'loads the app normally even when the asset pipeline is disabled' do
-    expect {
-      create_app(:enabled => false)
-    }.to_not raise_error
+  it "configure the debug and compress flags" do
+    Stylus.setup(env, :debug => true, :compress => true)
+    Stylus.debug.should == true
+    Stylus.compress.should == true
   end
 end

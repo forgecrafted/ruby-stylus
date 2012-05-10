@@ -4,6 +4,7 @@ require 'rails/generators/test_case'
 
 require 'active_support/railtie'
 require 'action_controller/railtie'
+require 'sprockets'
 require 'sprockets/railtie'
 require 'stylus/railtie'
 
