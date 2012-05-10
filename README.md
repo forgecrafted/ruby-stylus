@@ -64,7 +64,7 @@ If you use Stylus `@import` to expose variables, mixins or just to concatenate c
 
 ### Standalone Sprockets usage
 
-If you're using Sprockets outside Rails, on Sinatra or on a plain Rack app, you can wire up Stylus inside a instance of `Sprockets::Environment` using `Stylus::Sprockets.register`.
+If you're using Sprockets outside Rails, on Sinatra or on a plain Rack app, you can wire up Stylus inside a instance of `Sprockets::Environment` by requiring `stylus/sprockets` and using the `Stylus.setup` method.
 
 An example of serving stylesheets from `./stylesheets` using just Sprockets and Rack.
 
@@ -77,7 +77,7 @@ require 'stylus/sprockets'
 assets = Sprockets::Environment.new
 assets.append_path('stylesheets')
 
-Stylus::Sprockets.register(assets)
+Stylus.setup(assets)
 
 # Run the Sprockets Rack!
 map('/assets') { run assets }
