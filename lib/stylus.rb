@@ -105,7 +105,7 @@ module Stylus
       end
       source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      exec('compiler', source, options, plugins, imports)
+      exec('compile', source, options, plugins, imports)
     end
 
     # Converts back an input of plain CSS to the `Stylus` syntax. The source object can be

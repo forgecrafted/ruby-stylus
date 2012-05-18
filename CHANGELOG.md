@@ -4,6 +4,7 @@
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.1...master)
 
 * Sprockets configuration extracted to `Stylus.setup` - you can use this on a Sinatra or Rack app easily;
+* When `node` isn't available, Stylus will raise a exception of it's own instead of blowing up inside ExecJS.
 
 ### 0.5.1 (2012-05-07)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.0...v0.5.1)
