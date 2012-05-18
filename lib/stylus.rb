@@ -1,9 +1,9 @@
-require 'stylus/version'
-require 'stylus/sprockets'
 require 'stylus/runtime'
+require 'stylus/source'
+require 'stylus/sprockets'
+require 'stylus/version'
 require 'stylus/tilt' if defined?(::Tilt)
 require 'stylus/railtie' if defined?(::Rails)
-require 'stylus/source'
 ## Stylus
 #
 # `stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus)
@@ -23,7 +23,7 @@ require 'stylus/source'
 # `Stylus.compile(File.read('application.styl'), :compress => true)`
 #
 module Stylus
-  extend Runtime
+  extend Runtime, Sprockets
   class << self
     @@compress = false
     @@debug    = false
