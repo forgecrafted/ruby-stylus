@@ -10,4 +10,15 @@ describe Stylus::ImportProcessor do
     sprockets.should_receive(:depend_on).with(dependency)
     template.render(sprockets)
   end
+
+  it "swallows errors from files outside the Sprockets paths" do
+    source = "@import 'nib'"
+    template = Stylus::ImportProcessor.new { source }
+    sprockets = double()
+    sprockets.should_receive(:resolve).and_raise(::Sprockets::FileNotFound)
+
+    expect {
+      template.render(sprockets)
+    }.to_not raise_error(::Sprockets::FileNotFound)
+  end
 end

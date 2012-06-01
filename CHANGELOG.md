@@ -1,6 +1,11 @@
 ## Changelog
 
-### 0.6.1 (2012-05-31)
+### 0.6.2 (2012-06-01)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.1...v0.6.2)
+
+* Fixes namespacing clashing between `Stylus::Sprockets` and the `Sprockets` modules.
+
+### 0.6.1 (2012-05-31) (yanked)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.0...v0.6.1)
 
 * Skips `Sprockets::FileNotFound` errors on the ImportProcessor.
