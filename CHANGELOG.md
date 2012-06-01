@@ -1,7 +1,12 @@
 ## Changelog
 
+### 0.6.1 (2012-05-31)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.0...v0.6.1)
+
+* Skips `Sprockets::FileNotFound` errors on the ImportProcessor.
+
 ### 0.6.0 (2012-05-20)
-[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.1...v.0.6.0)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.5.1...v0.6.0)
 
 * Sprockets configuration extracted to `Stylus.setup` - you can use this on a Sinatra or Rack app;
 * When `node` isn't available, Stylus will raise a exception of it's own instead of blowing up inside ExecJS.
