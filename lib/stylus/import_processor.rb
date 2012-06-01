@@ -23,13 +23,24 @@ module Stylus
       dependencies = data.scan(IMPORT_SCANNER).flatten.compact.uniq
 
       dependencies.each do |path|
-        asset = context.resolve(path, :content_type => 'text/css')
+        asset = resolve(context, path)
 
         if asset
           context.depend_on(asset)
         end
       end
       data
+    end
+
+    # Internal: Resolves the given 'path' with the Sprockets context, but
+    # avoids 'Sprockets::FileNotFound' exceptions since we might be importing
+    # files outside the Sprockets load path - like "nib".
+    #
+    # Returns the resolved 'Asset' or nil if it can't be found.
+    def resolve(context, path)
+      context.resolve(path, :content_type => 'text/css')
+    rescue Sprockets::FileNotFound
+      nil
     end
   end
 end
