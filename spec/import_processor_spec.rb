@@ -11,6 +11,21 @@ describe Stylus::ImportProcessor do
     template.render(sprockets)
   end
 
+  it 'walks the dependency chain of imported files' do
+    source    = fixture(:nested_import).first
+    template  = Stylus::ImportProcessor.new { source }
+    nested    = Pathname.new(fixture_path('mixins/nested'))
+    vendor    = Pathname.new(fixture_path('mixins/vendor'))
+    sprockets = double
+
+    sprockets.should_receive(:resolve).with('mixins/nested', :content_type=>"text/css") { nested }
+    sprockets.should_receive(:resolve).with('mixins/vendor', :content_type=>"text/css") { vendor }
+    sprockets.should_receive(:depend_on).with(nested)
+    sprockets.should_receive(:depend_on).with(vendor)
+
+    template.render(sprockets)
+  end
+
   it "swallows errors from files outside the Sprockets paths" do
     source = "@import 'nib'"
     template = Stylus::ImportProcessor.new { source }

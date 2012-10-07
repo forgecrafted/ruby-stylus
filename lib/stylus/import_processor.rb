@@ -17,9 +17,22 @@ module Stylus
     def prepare
     end
 
-    # Internal: Scan the stylesheet body, looking for '@import' calls to
-    # declare them as dependency on the context using 'depend_on' method.
+    # Public: Scans the current stylesheet to track down Stylus
+    # '@import' calls as dependencies.
+    #
+    # Returns the stylesheet content, unmodified.
     def evaluate(context, locals, &block)
+      depend_on(context, data)
+      data
+    end
+
+    private
+
+    # Internal: Scan the stylesheet body, looking for '@import' calls to
+    # declare them as a dependency on the context using 'depend_on' method.
+    # This method will recursively scans all dependency to ensure that
+    # the current stylesheet tracks down nested dependencies.
+    def depend_on(context, data)
       dependencies = data.scan(IMPORT_SCANNER).flatten.compact.uniq
 
       dependencies.each do |path|
@@ -27,9 +40,9 @@ module Stylus
 
         if asset
           context.depend_on(asset)
+          depend_on(context, File.read(asset))
         end
       end
-      data
     end
 
     # Internal: Resolves the given 'path' with the Sprockets context, but

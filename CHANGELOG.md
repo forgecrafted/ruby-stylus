@@ -1,5 +1,9 @@
 ## Changelog
 
+### HEAD
+
+* `ImportProcessor` tracks `@import` definitions recursively.
+
 ### 0.6.2 (2012-06-01)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.1...v0.6.2)
 
