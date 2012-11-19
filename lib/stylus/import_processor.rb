@@ -53,7 +53,11 @@ module Stylus
     def resolve(context, path)
       context.resolve(path, :content_type => 'text/css')
     rescue ::Sprockets::FileNotFound
-      nil
+      begin
+        context.resolve(path + '/index', :content_type => 'text/css')
+      rescue
+        nil
+      end
     end
   end
 end
