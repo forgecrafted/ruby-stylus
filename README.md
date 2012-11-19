@@ -62,27 +62,27 @@ If you use Stylus `@import` to expose variables, mixins or just to concatenate c
 @import 'mixins'
 ```
 
-### `@import` dependency resoltuion
+### `@import` dependency resolution
 
 Because of how sprockets handles dependency resolution for computing
 file changes and expiring caches, it is necessary to specify the full import path in your import statements.
 
 That is, given:
 
-    ./assets/stylesheets/
-    ./assets/stylesheets/file.styl
-    ./assets/stylesheets/some_directory/other_file.styl
-    ./assets/stylesheets/some_directory/another_file.styl
+    app/assets/stylesheets/
+    app/assets/stylesheets/file.styl
+    app/assets/stylesheets/some_directory/other_file.styl
+    app/assets/stylesheets/some_directory/another_file.styl
 
 Imports should be specified with the full path relative to
-`/assets/stylesheets` regardless of where the file calling the import is.
+`app/assets/stylesheets` regardless of where the file calling the import is. In this example we use the `app/assets` directory, but this also applies to `vendor/assets` and `lib/assets`.
 
-`./assets/stylesheets/file.styl`
+`app/assets/stylesheets/file.styl`
 
     @import "some_directory/other_file.styl"
     ...
 
-`./assets/stylesheets/some_directory/other_file.styl`
+`app/assets/stylesheets/some_directory/other_file.styl`
 
     @import "some_directory/another_file.styl"
     ...
