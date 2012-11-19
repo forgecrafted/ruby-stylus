@@ -1,4 +1,5 @@
 # Based on the ImportProcessor from the less-rails gem, by @metaskills
+require 'pry'
 module Stylus
   # Internal: A Tilt template that tracks down '@import' declarations
   # and marks them as a dependency on the current asset.
@@ -53,7 +54,11 @@ module Stylus
     def resolve(context, path)
       context.resolve(path, :content_type => 'text/css')
     rescue ::Sprockets::FileNotFound
-      nil
+      begin
+        context.resolve(path + '/index', :content_type => 'text/css')
+      rescue
+        nil
+      end
     end
   end
 end
