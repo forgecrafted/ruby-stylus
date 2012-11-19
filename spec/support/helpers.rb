@@ -45,4 +45,10 @@ module Helpers
   def fixture_path(name)
     File.join(fixture_root, "#{name}.styl")
   end
+
+  def dependencies_on(asset)
+    context = env.context_class.new(env, asset.logical_path, asset.pathname)
+    context.evaluate(asset.pathname)
+    context._dependency_paths
+  end
 end
