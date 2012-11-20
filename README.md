@@ -62,6 +62,36 @@ If you use Stylus `@import` to expose variables, mixins or just to concatenate c
 @import 'mixins'
 ```
 
+### `@import` dependency resolution
+
+Because of how sprockets handles dependency resolution for computing
+file changes and expiring caches, it is necessary to specify the full import path in your import statements.
+
+That is, given:
+
+    app/assets/stylesheets/
+    app/assets/stylesheets/file.styl
+    app/assets/stylesheets/some_directory/other_file.styl
+    app/assets/stylesheets/some_directory/another_file.styl
+
+Imports should be specified with the full path relative to
+`app/assets/stylesheets` regardless of where the file calling the import is. In this example we use the `app/assets` directory, but this also applies to `vendor/assets` and `lib/assets`.
+
+`app/assets/stylesheets/file.styl`
+
+    @import "some_directory/other_file.styl"
+    ...
+
+`app/assets/stylesheets/some_directory/other_file.styl`
+
+    @import "some_directory/another_file.styl"
+    ...
+
+This will ensure that all changes get reflected when any of the imported
+files change. If you don't do this, sprockets will not accurately be
+able to keep track of your dependencies.
+
+
 ### Standalone Sprockets usage
 
 If you're using Sprockets outside Rails, on Sinatra or on a plain Rack app, you can wire up Stylus inside a instance of `Sprockets::Environment` with the `Stylus.setup` method.
