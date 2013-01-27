@@ -14,13 +14,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'execjs'
   s.add_dependency 'stylus-source'
-  s.add_development_dependency 'rspec',       '~> 2.0'
-  s.add_development_dependency 'railties',    '~> 3.2'
-  s.add_development_dependency 'tzinfo'
-  s.add_development_dependency 'yajl-ruby'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "lib/**/*"]
+  s.test_files    = Dir["spec/**/*.rb"]
   s.require_paths = ["lib"]
 end
