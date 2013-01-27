@@ -2,7 +2,11 @@
 
 ### HEAD
 
+### 0.7.0 (2013-01-27)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.2...v0.7.0)
+
 * `ImportProcessor` tracks `@import` definitions recursively.
+* `Tilt` shouldn't a hard dependency.
 
 ### 0.6.2 (2012-06-01)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.1...v0.6.2)
