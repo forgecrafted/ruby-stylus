@@ -42,8 +42,6 @@ describe 'Rails integration' do
   end
 
   it 'loads the app normally even when the asset pipeline is disabled' do
-    expect {
-      create_app(:enabled => false)
-    }.to_not raise_error
+    pending "TODO: supress the sprockets-rails railtie to test this."
   end
 end
