@@ -2,7 +2,6 @@ require 'stylus/runtime'
 require 'stylus/source'
 require 'stylus/sprockets'
 require 'stylus/version'
-require 'stylus/tilt' if defined?(::Tilt)
 require 'stylus/railtie' if defined?(::Rails)
 ## Stylus
 #

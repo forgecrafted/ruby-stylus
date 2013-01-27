@@ -1,5 +1,7 @@
-require 'stylus/tilt'
-require 'stylus/import_processor'
+if defined?(::Tilt)
+  require 'stylus/tilt'
+  require 'stylus/import_processor'
+end
 
 # Public: The setup logic to configure both Stylus and Sprockets on any
 # kind of application - Rails, Sinatra or Rack.
