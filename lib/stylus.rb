@@ -1,6 +1,5 @@
 require 'stylus/runtime'
 require 'stylus/source'
-require 'stylus/sprockets'
 require 'stylus/version'
 require 'stylus/railtie' if defined?(::Rails)
 ## Stylus
@@ -22,7 +21,7 @@ require 'stylus/railtie' if defined?(::Rails)
 # `Stylus.compile(File.read('application.styl'), :compress => true)`
 #
 module Stylus
-  extend Runtime, Sprockets
+  extend Runtime
   class << self
     @@compress = false
     @@debug    = false

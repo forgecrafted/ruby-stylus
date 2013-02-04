@@ -1,4 +1,6 @@
 require 'stylus'
+require 'stylus/sprockets'
+
 module Stylus
   # Internal: The Railtie responsible for integrate the Stylus library with
   # a Rails 3.2 (or 3.1) application.
