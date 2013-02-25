@@ -99,7 +99,7 @@ An example of serving stylesheets from `./stylesheets` using just Sprockets and 
 
 ```ruby
 require 'sprockets'
-require 'stylus'
+require 'stylus/sprockets'
 
 # Serve your stylesheets living on ./stylesheets
 assets = Sprockets::Environment.new
