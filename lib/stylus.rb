@@ -152,5 +152,10 @@ module Stylus
 
   # Exports the `.node_modules` folder on the working directory so npm can
   # require modules installed locally.
-  ENV['NODE_PATH'] = "#{File.expand_path('node_modules')}:#{File.expand_path('vendor/node_modules')}:#{bundled_path}:#{ENV['NODE_PATH']}"
+  ENV['NODE_PATH'] = [
+    File.expand_path('node_modules'),
+    File.expand_path('vendor/node_modules'),
+    bundled_path,
+    ENV['NODE_PATH']
+  ].join(File::PATH_SEPARATOR)
 end
