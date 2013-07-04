@@ -32,7 +32,12 @@ module Stylus
     initializer 'stylus.setup', :after => :append_assets_path, :group => :all do |app|
       config = app.config.assets
       if config.enabled
-        Stylus.setup(app.assets, config)
+        sprockets = if ::Rails::VERSION::MAJOR == 4
+          Sprockets.respond_to?('register_engine') ? Sprockets : app.assets
+        else
+          app.assets
+        end
+        Stylus.setup(sprockets, config)
       end
     end
   end
