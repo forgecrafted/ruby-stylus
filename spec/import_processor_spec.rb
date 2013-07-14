@@ -52,6 +52,6 @@ describe Stylus::ImportProcessor do
 
     expect {
       template.render(sprockets)
-    }.to_not raise_error(::Sprockets::FileNotFound)
+    }.to_not raise_error
   end
 end

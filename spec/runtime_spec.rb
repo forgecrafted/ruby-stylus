@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Stylus::Runtime do
   it "raises an error if the runtime isn't available" do
-    Stylus.stub(:runtime) { mock("An unavailable Runtime", :available? => false) }
+    Stylus.stub(:runtime) { double("An unavailable Runtime", :available? => false) }
 
     expect {
       Stylus.version
