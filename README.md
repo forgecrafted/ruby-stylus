@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/lucasmazza/ruby-stylus.png)](http://travis-ci.org/lucasmazza/ruby-stylus)
 
-`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on [node.js](http://nodejs.org). It has support for the Rails 3.1 asset pipeline (thanks to a [Tilt](https://github.com/rtomayko/tilt) Template) and it's backed by the [ExecJS](https://github.com/sstephenson/execjs) gem.
+`stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on [node.js](http://nodejs.org). It has support for Rails 4 applications. (if you are working with Rails 3, check the [0-7-stable](https://github.com/lucasmazza/ruby-stylus/tree/0-7-stable) branch.)
 
 ## Installation
 
@@ -40,9 +40,7 @@ Stylus.use :nib
 # a `:filename` option so Stylus can locate your stylesheet for proper inspection.
 Stylus.debug = true
 ```
-### With Rails 3 and the Asset Pipeline.
-
-First of all, remember to add `gem 'stylus'` to your Gemfile inside the `:assets` group, So Rails will require the gem according to your current environment - on production you should serve precompiled versions of your assets instead of compiling on the fly.
+### With Rails and the Asset Pipeline.
 
 Adding `stylus` to your Gemfile should let you work with `.styl` files with the Rails 3.1 Pipeline. Any asset generated with `rails generate` will be created with a `.css.styl` extension.
 
@@ -138,7 +136,7 @@ For more info about the [Stylus](https://github.com/LearnBoost/stylus) syntax an
 
 (The MIT License)
 
-Copyright (c) 2012 Lucas Mazza &lt;luc4smazza@gmail.com&gt;
+Copyright (c) 2012-2013 Lucas Mazza &lt;luc4smazza@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
