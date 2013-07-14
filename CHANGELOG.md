@@ -1,6 +1,12 @@
-## Changelog
+### 0.7.2 (2013-06-03)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.7.1...v0.7.2)
 
-### HEAD
+* Use `File::PATH_SEPARATOR` when exporting the `NODE_PATH` variable.
+
+### 0.7.2 (2013-02-12)
+[Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.7.0...v0.7.1)
+
+* Fixes loading issues with Sprockets and Rails.
 
 ### 0.7.0 (2013-01-27)
 [Compare view](https://github.com/lucasmazza/ruby-stylus/compare/v0.6.2...v0.7.0)
