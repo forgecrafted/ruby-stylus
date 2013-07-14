@@ -1,9 +1,7 @@
 before_script: "npm install nib"
-before_install: gem update --system
 language: ruby
 gemfile:
-  - gemfiles/Gemfile-rails.3.1.x
   - Gemfile
 rvm:
-  - ree
+  - 2.0.0
   - 1.9.3

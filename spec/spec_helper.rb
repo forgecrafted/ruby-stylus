@@ -1,5 +1,4 @@
 require 'rails'
-require 'rails/test_help'
 require 'rails/generators/test_case'
 
 require 'active_support/railtie'
