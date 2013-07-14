@@ -10,13 +10,17 @@ module Helpers
     Rails.application = nil
 
     Class.new(Rails::Application).tap do |app|
-      assets = app.config.assets
-      assets.cache_store = :memory_store
-      assets.enabled  = options.fetch(:enabled, true)
-      assets.compress = true if options[:compress]
-      assets.debug    = true if options[:debug]
-      assets.paths << fixture_root
-      assets.paths << File.expand_path('javascripts')
+      config = app.config.assets
+      assets = app.assets
+      config.paths = []
+
+      assets.cache = ActiveSupport::Cache.lookup_store(:null_store)
+      config.compress = options[:compress]
+      config.debug    = options[:debug]
+      config.paths << fixture_root
+      config.paths << File.expand_path('javascripts')
+
+      app.config.eager_load = false
       app.config.active_support.deprecation = :log
       app.initialize!
     end

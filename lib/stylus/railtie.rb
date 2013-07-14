@@ -29,11 +29,8 @@ module Stylus
     # skipped.
     #
     # Returns nothing.
-    initializer 'stylus.setup', :after => :append_assets_path, :group => :all do |app|
-      config = app.config.assets
-      if config.enabled
-        Stylus.setup(app.assets, config)
-      end
+    config.assets.configure do |env|
+      Stylus.setup(env, config.assets)
     end
   end
 end
