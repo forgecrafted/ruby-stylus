@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "stylus"
   s.version     = Stylus::VERSION
   s.platform    = Gem::Platform::RUBY
+  s.licenses    = ["MIT"]
   s.authors     = ["Lucas Mazza"]
   s.email       = ["luc4smazza@gmail.com"]
   s.homepage    = "https://github.com/lucasmazza/ruby-stylus"
