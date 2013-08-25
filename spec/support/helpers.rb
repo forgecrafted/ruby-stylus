@@ -19,6 +19,7 @@ module Helpers
       config.debug    = options[:debug]
       config.paths << fixture_root
       config.paths << File.expand_path('javascripts')
+      yield(app) if block_given?
 
       app.config.eager_load = false
       app.config.active_support.deprecation = :log
@@ -28,6 +29,10 @@ module Helpers
 
   def fixture_root
     File.expand_path('../../stylesheets', __FILE__)
+  end
+
+  def images_root
+    File.expand_path('../../images', __FILE__)
   end
 
   def output_root

@@ -4,7 +4,7 @@ require 'stylus/tilt'
 describe Tilt::StylusTemplate do
 
   it "registers the template for .styl files" do
-    Tilt['application.styl'].should == Tilt::StylusTemplate
+    Tilt['application.styl'].should == Stylus::Rails::StylusTemplate
   end
 
   it "has a content-type" do

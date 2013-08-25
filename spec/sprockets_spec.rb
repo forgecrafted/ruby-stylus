@@ -8,8 +8,8 @@ describe "Sprockets setup" do
     end
   end
 
-  it "register the Tilt engine" do
-    env.should_receive(:register_engine).with('.styl', Tilt::StylusTemplate)
+  it "register the Rails Tilt engine" do
+    env.should_receive(:register_engine).with('.styl', Stylus::Rails::StylusTemplate)
     Stylus.setup(env)
   end
 
