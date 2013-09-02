@@ -6,6 +6,18 @@
 
 ## Installation
 
+If you have a `Gemfile`:
+
+```
+gem 'stylus'
+```
+
+or if you don't have a Gemfile, install it in your system: 
+
+```
+gem install stylus
+```
+
 Since version 0.3.0, the [stylus-source](https://github.com/railsjedi/ruby-stylus-source) packages the Stylus source into a Rubygem, so it will be available after installing this gem. The `ruby-source` version will follow the Stylus releases and their versions.
 
 You can replace the Stylus code by placing another version of Stylus on `./node_modules/stylus`, and it will be used instead of the version bundled inside the gem.
