@@ -4,8 +4,8 @@ describe 'Rails integration' do
 
   it "copies the folders ending with 'stylesheets' from the Sprockets load path" do
     app = create_app
-    Stylus.paths.should == [fixture_root]
-    Stylus.paths.should_not == app.assets.paths
+    Stylus.paths.should include fixture_root
+    Stylus.paths.should == app.assets.paths
   end
 
   it 'process .styl files with the asset pipeline' do

@@ -31,9 +31,8 @@ module Stylus
   # Returns nothing.
   def self.setup(environment, options = {})
     paths = options[:paths] || environment.paths
-    directories = paths.select { |dir| dir.to_s =~ /(assets|stylesheets)$/ }
 
-    Stylus.paths.concat(directories)
+    Stylus.paths.concat(paths)
 
     Stylus.debug = options.fetch(:debug, Stylus.debug)
     Stylus.compress = options.fetch(:compress, Stylus.compress)
