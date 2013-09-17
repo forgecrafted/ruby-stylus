@@ -18,9 +18,9 @@ describe "Sprockets setup" do
     Stylus.setup(env)
   end
 
-  it "copies the 'stylesheets' paths" do
+  it "copies the asset paths" do
     Stylus.setup(env)
-    Stylus.paths.should == [fixture_root]
+    Stylus.paths.should == env.paths
   end
 
   it "configure the debug and compress flags" do
