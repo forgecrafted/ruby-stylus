@@ -46,6 +46,7 @@ module Tilt
     #
     # Returns the compiled stylesheet with CSS syntax.
     def evaluate(scope, locals, &block)
+      data = Stylus::Helpers::AssetMixin.prepend_import_directive(scope, self.data)
       @output ||= Stylus.compile(data, options)
     end
   end

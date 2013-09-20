@@ -1,6 +1,7 @@
 require 'stylus/runtime'
 require 'stylus/source'
 require 'stylus/version'
+require 'stylus/helpers'
 require 'stylus/railtie' if defined?(::Rails)
 ## Stylus
 #
