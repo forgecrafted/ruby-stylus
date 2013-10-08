@@ -1,5 +1,6 @@
 require 'stylus'
 require 'stylus/sprockets'
+require 'stylus/rails_tilt'
 
 module Stylus
   # Internal: The Railtie responsible for integrate the Stylus library with
