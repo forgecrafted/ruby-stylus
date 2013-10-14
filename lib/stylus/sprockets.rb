@@ -37,7 +37,16 @@ module Stylus
     Stylus.debug = options.fetch(:debug, Stylus.debug)
     Stylus.compress = options.fetch(:compress, Stylus.compress)
 
-    environment.register_engine('.styl', Tilt::StylusTemplate)
+    environment.register_engine('.styl', template_handler)
     environment.register_preprocessor('text/css', Stylus::ImportProcessor)
+  end
+
+  # Internal: Returns Stylus Tilt engine that will be used for Sprockets configuration.
+  def self.template_handler
+    if defined?(::Rails)
+      Stylus::Rails::StylusTemplate
+    else
+      Tilt::StylusTemplate
+    end
   end
 end
