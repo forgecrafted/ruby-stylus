@@ -12,7 +12,7 @@ If you have a `Gemfile`:
 gem 'stylus'
 ```
 
-or if you don't have a Gemfile, install it in your system: 
+or if you don't have a Gemfile, install it in your system:
 
 ```
 gem install stylus
@@ -35,7 +35,7 @@ require 'stylus'
 Stylus.compile(File.new('application.styl')) # returns the compiled stylesheet.
 
 # Use the :compress option, removing most newlines from the code.
-Stylus.compile(File.read('application.styl'), :compress => true)
+Stylus.compile(File.read('application.styl'), compress: true)
 
 # Or use the global compress flag
 Stylus.compress = true
@@ -126,7 +126,7 @@ map('/assets') { run assets.index }
 [Stylus](https://github.com/LearnBoost/stylus) exposes a nice API to create plugins written on [node.js](http://nodejs.org), like [nib](https://github.com/visionmedia/nib). The installation process should be the same as described above for [Stylus](https://github.com/LearnBoost/stylus) (since they're all npm packages after all). You can hook them up on your Ruby code with `Stylus.use`:
 
 ```ruby
-Stylus.use :fingerprint, :literal => 'caa8c262e23268d2a7062c6217202343b84f472b'
+Stylus.use :fingerprint, literal: 'caa8c262e23268d2a7062c6217202343b84f472b'
 ```
 
 Will run something like this in JavaScript:
