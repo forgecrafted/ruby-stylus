@@ -61,7 +61,6 @@ GEM
       atomic
     tilt (1.4.1)
     tzinfo (0.3.38)
-    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -71,5 +70,3 @@ DEPENDENCIES
   rspec (~> 2.14.0)
   sprockets-rails (~> 2.0.0)
   stylus!
-  tzinfo
-  yajl-ruby
