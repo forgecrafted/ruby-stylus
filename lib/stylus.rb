@@ -130,13 +130,13 @@ module Stylus
     # Returns the default `Hash` of options:
     # the compress flag and the global load path.
     def defaults
-      { :compress => self.compress?, :paths => self.paths }
+      { compress: self.compress?, paths: self.paths }
     end
 
     # Returns a Hash with the debug options to pass to
     # Stylus.
     def debug_options
-      { :linenos => self.debug?, :firebug => self.debug? }
+      { linenos: self.debug?, firebug: self.debug? }
     end
 
     # Return the gem version alongside with the current `Stylus` version of your system.

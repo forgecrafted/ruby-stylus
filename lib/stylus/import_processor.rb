@@ -51,10 +51,10 @@ module Stylus
     #
     # Returns the resolved 'Asset' or nil if it can't be found.
     def resolve(context, path)
-      context.resolve(path, :content_type => 'text/css')
+      context.resolve(path, content_type: 'text/css')
     rescue ::Sprockets::FileNotFound
       begin
-        context.resolve(path + '/index', :content_type => 'text/css')
+        context.resolve(path + '/index', content_type: 'text/css')
       rescue
         nil
       end

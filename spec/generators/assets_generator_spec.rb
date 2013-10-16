@@ -6,6 +6,6 @@ describe Stylus::Generators::AssetsGenerator do
   arguments  %w(posts)
 
   it 'generates a .styl file' do
-    file('app/assets/stylesheets/posts.css.styl').should exist
+    expect(file('app/assets/stylesheets/posts.css.styl')).to exist
   end
 end

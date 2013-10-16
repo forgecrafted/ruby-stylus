@@ -8,10 +8,10 @@ describe Rails::Generators::ScaffoldGenerator do
   arguments  %w(posts --stylesheet-engine=stylus --orm=false)
 
   it 'generates the default scaffold stylesheet' do
-    file('app/assets/stylesheets/scaffold.css').should exist
+    expect(file('app/assets/stylesheets/scaffold.css')).to exist
   end
 
   it 'generates a named .styl file' do
-    file('app/assets/stylesheets/posts.css.styl').should exist
+    expect(file('app/assets/stylesheets/posts.css.styl')).to exist
   end
 end

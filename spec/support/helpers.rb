@@ -1,6 +1,6 @@
 module Helpers
   def create_routes
-    destination = File.join(destination_root, "config")
+    destination = File.join(destination_root, 'config')
 
     FileUtils.mkdir_p(destination)
     FileUtils.touch File.join(destination, 'routes.rb')

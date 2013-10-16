@@ -12,43 +12,43 @@ describe Stylus::ImportProcessor do
     asset = env['import']
     dependencies = dependencies_on(asset)
 
-    dependencies.should include(fixture_path('mixins/vendor'))
+    expect(dependencies).to include(fixture_path('mixins/vendor'))
   end
 
-  context "nested dependencies" do
+  context 'nested dependencies' do
     it 'walks the dependency chain of imported files' do
       asset = env['nested_import']
       dependencies = dependencies_on(asset)
 
-      dependencies.should include(fixture_path('mixins/nested'))
-      dependencies.should include(fixture_path('mixins/vendor'))
+      expect(dependencies).to include(fixture_path('mixins/nested'))
+      expect(dependencies).to include(fixture_path('mixins/vendor'))
     end
 
     it "adds files referenced in a directory's index file" do
       asset = env['indexed_nested_import']
       dependencies = dependencies_on(asset)
 
-      dependencies.should include(fixture_path('indexed/index'))
-      dependencies.should include(fixture_path('indexed/first_dep'))
-      dependencies.should include(fixture_path('indexed/second_dep'))
+      expect(dependencies).to include(fixture_path('indexed/index'))
+      expect(dependencies).to include(fixture_path('indexed/first_dep'))
+      expect(dependencies).to include(fixture_path('indexed/second_dep'))
     end
 
-    it "walks dependency chains through indexes" do
+    it 'walks dependency chains through indexes' do
       asset = env['indexed_recursive_import']
       dependencies = dependencies_on(asset)
 
-      dependencies.should include(fixture_path('indexed_nested_import'))
-      dependencies.should include(fixture_path('indexed/index'))
-      dependencies.should include(fixture_path('indexed/first_dep'))
-      dependencies.should include(fixture_path('indexed/second_dep'))
+      expect(dependencies).to include(fixture_path('indexed_nested_import'))
+      expect(dependencies).to include(fixture_path('indexed/index'))
+      expect(dependencies).to include(fixture_path('indexed/first_dep'))
+      expect(dependencies).to include(fixture_path('indexed/second_dep'))
     end
   end
 
-  it "swallows errors from files outside the Sprockets paths" do
-    source = "@import 'nib'"
+  it 'swallows errors from files outside the Sprockets paths' do
+    source = '@import "nib"'
     template = Stylus::ImportProcessor.new { source }
-    sprockets = double()
-    sprockets.should_receive(:resolve).twice.and_raise(::Sprockets::FileNotFound)
+    sprockets = double
+    expect(sprockets).to receive(:resolve).twice.and_raise(::Sprockets::FileNotFound)
 
     expect {
       template.render(sprockets)

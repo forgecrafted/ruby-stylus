@@ -22,8 +22,8 @@ module Stylus
     # if the runtime isn't available. Otherwise, this is a noop.
     def check_availability!
       unless runtime.available?
-        message = "The Node.JS runtime isn't available to Stylus."
-        message << "Ensure that the 'node' (or 'nodejs') executable is present in your $PATH."
+        message = 'The Node.JS runtime is not available to Stylus.'
+        message << 'Ensure that the "node" (or "nodejs") executable is present in your $PATH.'
         raise RuntimeError, message
       end
     end
@@ -46,9 +46,9 @@ module Stylus
     # any Node.JS program.
     def runtime
       @runtime ||= ExecJS::ExternalRuntime.new(
-        :name        => 'Node.js (V8)',
-        :command     => ["nodejs", "node"],
-        :runner_path => File.expand_path("../runtime/runner.js", __FILE__)
+        name:        'Node.js (V8)',
+        command:     ['nodejs', 'node'],
+        runner_path: File.expand_path('../runtime/runner.js', __FILE__)
         )
     end
   end

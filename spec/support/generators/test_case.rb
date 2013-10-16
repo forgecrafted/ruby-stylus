@@ -23,7 +23,7 @@ module Generators
         run_generator
       end
 
-      destination File.expand_path("../tmp", __FILE__)
+      destination File.expand_path('../tmp', __FILE__)
     end
 
     module ClassMethods
