@@ -1,4 +1,5 @@
-before_script: "npm install nib"
+before_script: 'npm install nib'
+script: 'script/rspec'
 language: ruby
 gemfile:
   - Gemfile
