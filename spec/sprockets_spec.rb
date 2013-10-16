@@ -8,9 +8,14 @@ describe 'Sprockets setup' do
     end
   end
 
-  it 'register the Rails Tilt engine' do
-    expect(env).to receive(:register_engine).with('.styl', Stylus::Rails::StylusTemplate)
+  it 'register the default Tilt template' do
+    expect(env).to receive(:register_engine).with('.styl', Tilt::StylusTemplate)
     Stylus.setup(env)
+  end
+
+  it 'register a Rails specific Tilt template' do
+    expect(env).to receive(:register_engine).with('.styl', Stylus::Rails::StylusTemplate)
+    Stylus.setup(env, rails: true)
   end
 
   it 'register the import processor' do

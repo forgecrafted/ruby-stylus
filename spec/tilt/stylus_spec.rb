@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'stylus/tilt'
+require 'stylus/tilt/stylus'
 
 describe Tilt::StylusTemplate do
   it 'registers the template for .styl files' do

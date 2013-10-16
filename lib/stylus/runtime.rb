@@ -8,8 +8,7 @@ module Stylus
     # Internal: Calls a specific function on the Node.JS context.
     #
     # Example
-    #  exec('version', 2)
-    #  # => "2"
+    #  exec('version', 2) # => '2'
     #
     # Returns The function returned value.
     def exec(*arguments)

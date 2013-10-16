@@ -1,10 +1,9 @@
 require 'stylus'
 require 'stylus/sprockets'
-require 'stylus/rails_tilt'
 
 module Stylus
   # Internal: The Railtie responsible for integrate the Stylus library with
-  # a Rails 3.2 (or 3.1) application.
+  # a Rails application.
   #
   # Some of the customizations of using Stylus alongside Rails:
   #
@@ -25,13 +24,9 @@ module Stylus
     # both Stylus and the Sprockets instance that lives on 'app.assets'. The entire
     # configuration object will be passed along.
     #
-    # If you don't have the Asset Pipeline enabled on your application - done by
-    # setting the 'config.assets.enabled' flag to false, this setup process will be
-    # skipped.
-    #
     # Returns nothing.
     config.assets.configure do |env|
-      Stylus.setup(env, config.assets)
+      Stylus.setup(env, config.assets.merge(rails: true))
     end
   end
 end

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'stylus/rails_tilt'
+require 'stylus/tilt/rails'
 
 describe Stylus::Rails::StylusTemplate do
   it 'registers the template for .styl files' do
