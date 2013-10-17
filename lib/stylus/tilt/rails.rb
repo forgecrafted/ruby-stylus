@@ -25,6 +25,8 @@ asset-url(key)
   return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:url]} ()
 asset-path(key)
   return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:path]} ()
+image-url = asset-url
+image-path = asset-path
                           STYL
                         else
                           ''
