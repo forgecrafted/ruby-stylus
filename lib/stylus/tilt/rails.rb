@@ -17,27 +17,43 @@ module Stylus
 
       # Internal: Builds body of a mixin
       #
-      # Returns string representation of a mixin with asset helper functions
+      # Returns string representation of all asset helper mixins
       def build_mixin_body(scope)
         @mixin_body ||= if assets_hash(scope).values.all? {|value| value != '' }
                           <<-STYL
-asset-url(key)
-  return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:url]} ()
-asset-path(key)
-  return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:path]} ()
+#{generate_helper(scope, 'asset')}
+#{generate_helper(scope, 'image')}
+#{generate_helper(scope, 'audio')}
+#{generate_helper(scope, 'video')}
                           STYL
                         else
                           ''
                         end
       end
 
+      # Internal: Generates stylus mixin pairs for asset types
+      # 
+      # Returns string representations of mixins in stylus syntax
+      def generate_helper(scope, name)
+        res = ""
+        ['url', 'path'].each do |type|
+          asset_pair = assets_hash(scope)[type.to_sym]
+          asset_pair = assets_hash(scope, type: name)[type.to_sym] if name != 'asset'
+          res += <<-EOS
+#{name}-#{type}(key)
+  return pair[1] if pair[0] == key for pair in #{asset_pair} ()
+          EOS
+        end
+        return res
+      end
+
       # Internal: Construct Hash with absolute/relative paths in stylus syntax.
       #
       # Returns string representations of hash in Stylus syntax
-      def assets_hash(scope)
+      def assets_hash(scope, options = {})
         @assets_hash ||= scope.environment.each_logical_path.each_with_object({ :url => '', :path => '' }) do |logical_path, assets_hash|
           unless logical_path =~/.*\.(css|js)$/
-            path_to_asset = scope.path_to_asset(logical_path)
+            path_to_asset = scope.path_to_asset(logical_path, options)
             assets_hash[:url] << "('#{logical_path}' url(#{path_to_asset})) "
             assets_hash[:path] << "('#{logical_path}' \"#{path_to_asset}\") "
           end
