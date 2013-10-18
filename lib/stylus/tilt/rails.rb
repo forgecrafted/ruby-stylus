@@ -25,8 +25,10 @@ asset-url(key)
   return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:url]} ()
 asset-path(key)
   return pair[1] if pair[0] == key for pair in #{assets_hash(scope)[:path]} ()
-image-url = asset-url
-image-path = asset-path
+image-url(key)
+  return pair[1] if pair[0] == key for pair in #{assets_hash(scope, type: 'image')[:url]} ()
+image-path(key)
+  return pair[1] if pair[0] == key for pair in #{assets_hash(scope, type: 'image')[:path]} ()
                           STYL
                         else
                           ''
@@ -36,10 +38,10 @@ image-path = asset-path
       # Internal: Construct Hash with absolute/relative paths in stylus syntax.
       #
       # Returns string representations of hash in Stylus syntax
-      def assets_hash(scope)
+      def assets_hash(scope, options = {})
         @assets_hash ||= scope.environment.each_logical_path.each_with_object({ :url => '', :path => '' }) do |logical_path, assets_hash|
           unless logical_path =~/.*\.(css|js)$/
-            path_to_asset = scope.path_to_asset(logical_path)
+            path_to_asset = scope.path_to_asset(logical_path, options)
             assets_hash[:url] << "('#{logical_path}' url(#{path_to_asset})) "
             assets_hash[:path] << "('#{logical_path}' \"#{path_to_asset}\") "
           end
