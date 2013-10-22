@@ -38,7 +38,7 @@ asset-path(key)
         @assets_hash ||= scope.environment.each_logical_path.each_with_object({ :url => '', :path => '' }) do |logical_path, assets_hash|
           unless logical_path =~/.*\.(css|js)$/
             path_to_asset = scope.path_to_asset(logical_path)
-            assets_hash[:url] << "('#{logical_path}' url(#{path_to_asset})) "
+            assets_hash[:url] << "('#{logical_path}' url(\"#{path_to_asset}\")) "
             assets_hash[:path] << "('#{logical_path}' \"#{path_to_asset}\") "
           end
         end
