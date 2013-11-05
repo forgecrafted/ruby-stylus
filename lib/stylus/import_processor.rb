@@ -33,7 +33,7 @@ module Stylus
     # Internal: Returns true if the file being processed counts as a
     # Stylus file (That is, it has a .styl extension).
     def stylus_file?(context)
-      context.environment.attributes_for(context.pathname).extensions.include?('.styl')
+      context.environment.attributes_for(file).extensions.include?('.styl')
     end
 
     # Internal: Scan the stylesheet body, looking for '@import' calls to
