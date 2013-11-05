@@ -22,11 +22,19 @@ module Stylus
     #
     # Returns the stylesheet content, unmodified.
     def evaluate(context, locals, &block)
+      return data unless stylus_file?(context)
+
       depend_on(context, data)
       data
     end
 
     private
+
+    # Internal: Returns true if the file being processed counts as a
+    # Stylus file (That is, it has a .styl extension).
+    def stylus_file?(context)
+      context.environment.attributes_for(context.pathname).extensions.include?('.styl')
+    end
 
     # Internal: Scan the stylesheet body, looking for '@import' calls to
     # declare them as a dependency on the context using 'depend_on' method.
