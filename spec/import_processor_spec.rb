@@ -49,7 +49,6 @@ describe Stylus::ImportProcessor do
     template = Stylus::ImportProcessor.new('stylesheet.scss') { source }
     context = double
 
-    expect(context).to receive(:environment).and_return(env)
     expect(context).to_not receive(:depend_on)
     template.render(context)
   end
