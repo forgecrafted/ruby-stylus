@@ -44,11 +44,21 @@ describe Stylus::ImportProcessor do
     end
   end
 
+  it 'does not process non-stylus files' do
+    source = '@import "nib"'
+    template = Stylus::ImportProcessor.new('stylesheet.scss') { source }
+    context = double
+
+    expect(context).to_not receive(:depend_on)
+    template.render(context)
+  end
+
   it 'swallows errors from files outside the Sprockets paths' do
     source = '@import "nib"'
     template = Stylus::ImportProcessor.new { source }
     sprockets = double
     expect(sprockets).to receive(:resolve).twice.and_raise(::Sprockets::FileNotFound)
+    expect(template).to receive(:stylus_file?).and_return(true)
 
     expect {
       template.render(sprockets)
