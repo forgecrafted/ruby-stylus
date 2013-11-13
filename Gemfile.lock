@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stylus (1.0.0.beta)
+    stylus (1.0.0)
       execjs
       stylus-source
 
