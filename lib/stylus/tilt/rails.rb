@@ -36,7 +36,7 @@ asset-path(key)
       # Returns string representations of hash in Stylus syntax
       def assets_hash(scope)
         @assets_hash ||= scope.environment.each_logical_path.each_with_object({ :url => '', :path => '' }) do |logical_path, assets_hash|
-          unless logical_path =~/.*\.(css|js)$/
+          unless File.extname(logical_path) =~ /^(\.(css|js)|)$/
             path_to_asset = scope.path_to_asset(logical_path)
             assets_hash[:url] << "('#{logical_path}' url(\"#{path_to_asset}\")) "
             assets_hash[:path] << "('#{logical_path}' \"#{path_to_asset}\") "
