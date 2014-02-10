@@ -1,4 +1,8 @@
-### HEAD - 1.0.0
+### 1.0.1
+
+* Prevent exceptions from files without extensions.
+
+### 1.0.0
 
 * Rails 4+ and Ruby 1.9.x/2.0.0 support.
 * Support for the `asset-path` and `asset-url` mixins, thanks to [@spilin](https://github.com/spilin).
