@@ -27,7 +27,7 @@ module Stylus
     @@debug     = false
     @@paths     = []
     @@imports   = []
-    @@api_calls = {}
+    @@definitions = {}
     @@plugins   = {}
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
@@ -49,9 +49,10 @@ module Stylus
     alias :imports :import
 
 
-    # Stores a list of api calls to execute on every compile process.
-    def api(command, *args)
-      @@api_calls[command] = args
+    # Stores a list of defined variables to create on every compile process.
+    def define(variable, value, options = {})
+      literal = true if options[:literal]
+      @@definitions[variable] = { value: value, literal: literal }
     end
 
     # Retrieves all the registered plugins.
@@ -59,9 +60,9 @@ module Stylus
       @@plugins
     end
 
-    # Retrieves all the registered api calls.
-    def api_calls
-      @@api_calls
+    # Retrieves all the registered variables.
+    def definitions
+      @@definitions
     end
 
     # Returns the global load path `Array` for your stylesheets.
@@ -115,7 +116,7 @@ module Stylus
       end
       source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      exec('compile', source, options, plugins, imports, api_calls)
+      exec('compile', source, options, plugins, imports, definitions)
     end
 
     # Converts back an input of plain CSS to the `Stylus` syntax. The source object can be

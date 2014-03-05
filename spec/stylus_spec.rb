@@ -62,15 +62,21 @@ describe Stylus do
     expect(Stylus.compile(input)).to eq(output)
   end
 
-  it 'stores the api calls' do
-    Stylus.api "define", "mycolor", "red"
-    expect(Stylus).to have(1).api_calls
+  it 'stores the define calls' do
+    Stylus.define "mystring", "test"
+    expect(Stylus).to have(1).definitions
   end
 
-  it 'executes the given api call' do
-    Stylus.api "define", "mycolor", "red"
-    input, output = fixture(:api_call)
-    expect(Stylus.compile(input)).to match(/color: 'red'/)
+  it 'defines a global variable string' do
+    Stylus.define "mystring", "test"
+    input, output = fixture(:definition)
+    expect(Stylus.compile(input)).to match(/content: 'test'/)
+  end
+
+  it 'defines a global variable literal' do
+    Stylus.define "mystring", "red", :literal => true
+    input, output = fixture(:definition)
+    expect(Stylus.compile(input)).to match(/content: red/)
   end
 
   it 'includes and imports "nib" automatically' do
