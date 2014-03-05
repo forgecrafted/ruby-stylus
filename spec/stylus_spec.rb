@@ -62,6 +62,17 @@ describe Stylus do
     expect(Stylus.compile(input)).to eq(output)
   end
 
+  it 'stores the api calls' do
+    Stylus.api "define", "mycolor", "red"
+    expect(Stylus).to have(1).api_calls
+  end
+
+  it 'executes the given api call' do
+    Stylus.api "define", "mycolor", "red"
+    input, output = fixture(:api_call)
+    expect(Stylus.compile(input)).to match(/color: 'red'/)
+  end
+
   it 'includes and imports "nib" automatically' do
     Stylus.nib = true
     input, output = fixture(:nib)

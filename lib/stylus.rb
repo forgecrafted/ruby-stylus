@@ -23,11 +23,12 @@ require 'stylus/railtie' if defined?(::Rails)
 module Stylus
   extend Runtime
   class << self
-    @@compress = false
-    @@debug    = false
-    @@paths    = []
-    @@imports  = []
-    @@plugins  = {}
+    @@compress  = false
+    @@debug     = false
+    @@paths     = []
+    @@imports   = []
+    @@api_calls = {}
+    @@plugins   = {}
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
     def use(*options)
@@ -47,9 +48,20 @@ module Stylus
     end
     alias :imports :import
 
+
+    # Stores a list of api calls to execute on every compile process.
+    def api(command, *args)
+      @@api_calls[command] = args
+    end
+
     # Retrieves all the registered plugins.
     def plugins
       @@plugins
+    end
+
+    # Retrieves all the registered api calls.
+    def api_calls
+      @@api_calls
     end
 
     # Returns the global load path `Array` for your stylesheets.
@@ -103,7 +115,7 @@ module Stylus
       end
       source  = source.read if source.respond_to?(:read)
       options = merge_options(options)
-      exec('compile', source, options, plugins, imports)
+      exec('compile', source, options, plugins, imports, api_calls)
     end
 
     # Converts back an input of plain CSS to the `Stylus` syntax. The source object can be
