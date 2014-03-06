@@ -62,6 +62,23 @@ describe Stylus do
     expect(Stylus.compile(input)).to eq(output)
   end
 
+  it 'stores the define calls' do
+    Stylus.define "mystring", "test"
+    expect(Stylus).to have(1).definitions
+  end
+
+  it 'defines a global variable string' do
+    Stylus.define "mystring", "test"
+    input, output = fixture(:definition)
+    expect(Stylus.compile(input)).to match(/content: 'test'/)
+  end
+
+  it 'defines a global variable literal' do
+    Stylus.define "mystring", "red", :literal => true
+    input, output = fixture(:definition)
+    expect(Stylus.compile(input)).to match(/content: red/)
+  end
+
   it 'includes and imports "nib" automatically' do
     Stylus.nib = true
     input, output = fixture(:nib)
