@@ -6,6 +6,7 @@ module Stylus
       VALID_ASSETS = /\.                # Extension starts with a literal 'dot'.
           (?:(png|jpe?g|gif|svg|webp))  # Match importable images.
         | (?:(ttf|eot|woff))            # Match font formats (svg already matched above).
+        | (?:(styl))                    # Force a dependency on other Stylus files, or imports break.
       \Z/x.freeze
 
       # Public: The default mime type for stylesheets.
