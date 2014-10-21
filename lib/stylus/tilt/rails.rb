@@ -3,7 +3,7 @@ require 'stylus/tilt/stylus'
 module Stylus
   module Rails
     class StylusTemplate < ::Tilt::StylusTemplate
-      EXCLUDED_EXTENSIONS = %w{ css js gzip json md }
+      EXCLUDED_EXTENSIONS = %w{ css js gzip json md html }
 
       # Public: The default mime type for stylesheets.
       self.default_mime_type = 'text/css'
