@@ -3,12 +3,6 @@ require 'stylus/tilt/stylus'
 module Stylus
   module Rails
     class StylusTemplate < ::Tilt::StylusTemplate
-      VALID_ASSETS = /\.                # Extension starts with a literal 'dot'.
-          (?:(png|jpe?g|gif|svg|webp))  # Match importable images.
-        | (?:(ttf|eot|woff))            # Match font formats (svg already matched above).
-        | (?:(styl))                    # Force a dependency on other Stylus files, or imports break.
-      \Z/x.freeze
-
       # Public: The default mime type for stylesheets.
       self.default_mime_type = 'text/css'
 
@@ -40,9 +34,10 @@ asset-path(key)
       #
       # Returns string representations of hash in Stylus syntax
       def assets_hash(scope)
-        @assets_hash ||= scope.environment.each_logical_path.each_with_object(url: '', path: '') do |logical_path, assets_hash|
-          next unless File.extname(logical_path) =~ VALID_ASSETS
-          path_to_asset = scope.path_to_asset(logical_path)
+        @assets_hash ||= scope.environment.logical_paths.each_with_object(url: '', path: '') do |logical_path, assets_hash|
+          logical_path = logical_path[0]
+          next unless File.extname(logical_path) =~ Stylus.configuration.assets_whitelist
+          path_to_asset = scope.asset_url(logical_path)
           assets_hash[:url] << "('#{logical_path}' url(\"#{path_to_asset}\")) "
           assets_hash[:path] << "('#{logical_path}' \"#{path_to_asset}\") "
         end
