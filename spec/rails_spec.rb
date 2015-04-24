@@ -35,6 +35,7 @@ describe 'Rails integration' do
 
   it 'compress the output if Rails is configured to compress them too' do
     result = fixture(:compressed).last
+    result.rstrip!  # because of modern text editors automatically adding new lines at the end of file
 
     app = create_app(:compress => true)
     app.assets['compressed'].to_s.should == result

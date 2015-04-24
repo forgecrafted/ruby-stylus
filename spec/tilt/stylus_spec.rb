@@ -19,6 +19,7 @@ describe Tilt::StylusTemplate do
   it 'compiles with the compress option' do
     input, output = fixture(:compressed)
     template = Tilt::StylusTemplate.new(compress: true) { |_| input }
+    output.rstrip!  # because of modern text editors automatically adding new lines at the end of file
     expect(template.render).to eq(output)
   end
 end
