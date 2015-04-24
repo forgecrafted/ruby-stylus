@@ -1,6 +1,6 @@
 # Ruby Stylus
 
-[![Build Status](https://secure.travis-ci.org/lucasmazza/ruby-stylus.png)](http://travis-ci.org/lucasmazza/ruby-stylus)
+[![Build Status](https://travis-ci.org/forgecrafted/ruby-stylus.svg?branch=master)](https://travis-ci.org/forgecrafted/ruby-stylus)
 
 `stylus` is a bridge between your Ruby code and the [Stylus](https://github.com/LearnBoost/stylus) library that runs on [node.js](http://nodejs.org). It has support for Rails 4 applications. (if you are working with Rails 3, check the [0-7-stable](https://github.com/lucasmazza/ruby-stylus/tree/0-7-stable) branch.)
 
