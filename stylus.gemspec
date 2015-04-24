@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'execjs'
   s.add_dependency 'stylus-source'
 
+  s.add_development_dependency 'coveralls', '>= 0.8.0'
+
   s.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "lib/**/*"]
   s.test_files    = Dir["spec/**/*.rb"]
   s.require_paths = ["lib"]

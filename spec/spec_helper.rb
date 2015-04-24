@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'rails'
 require 'rails/generators/test_case'
 
