@@ -79,6 +79,36 @@ describe Stylus do
     expect(Stylus.compile(input)).to match(/content: red/)
   end
 
+  it 'defines a hash variable' do
+    obj = {
+        :text_indent => '10px',
+        :text_align => 10,
+        :if_cond => true,
+    }
+    Stylus.define :my_obj, obj
+
+    input, _output = fixture(:definition_hash)
+
+    compiled = Stylus.compile(input)
+    expect(compiled).to match(/text-indent: 10px/)
+    expect(compiled).to match(/text-align: 10\b/)
+  end
+
+  it 'defines a hash variable and supports if' do
+    obj = {
+        :text_indent => '20px',
+        :text_align => 20,
+        :if_cond => false,
+    }
+    Stylus.define :my_obj, obj
+
+    input, _output = fixture(:definition_hash)
+
+    compiled = Stylus.compile(input)
+    expect(compiled).to_not match(/text-indent: 20px\b/)
+    expect(compiled).to match(/text-align: 20\b/)
+  end
+
   it 'includes and imports "nib" automatically' do
     Stylus.nib = true
     input, output = fixture(:nib)
