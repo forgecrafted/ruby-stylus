@@ -24,7 +24,7 @@ The [ruby-stylus-source](https://github.com/forgecrafted/ruby-stylus-source) pac
 
 You can manually replace the Stylus code by placing another version of Stylus on `./node_modules/stylus`, and it will be used instead of the version bundled inside the gem.
 
-**REMEMBER**, you still need the `node` command available on your runtime for this gem to work. Thjis gem is also compatible with the Heroku Cedar stack, enabling asset compilation during the deployment of your apps. You can check the [Node.js wiki](https://github.com/joyent/node/wiki/Quick-and-easy-installation) for more info.
+**REMEMBER**, you still need the `node` command available on your runtime for this gem to work. This gem is also compatible with the Heroku Cedar stack, enabling asset compilation during the deployment of your apps. You can check the [Node.js wiki](https://github.com/joyent/node/wiki/Quick-and-easy-installation) for more info.
 
 ## Usage
 
