@@ -22,13 +22,37 @@ require 'stylus/railtie' if defined?(::Rails)
 #
 module Stylus
   extend Runtime
+
+  class Configuration
+    attr_accessor :assets_whitelist
+
+    def initialize
+      @assets_whitelist = /\.           # Extension starts with a literal 'dot'.
+          (?:(png|jpe?g|gif|svg|webp))  # Match importable images.
+        | (?:(ttf|eot|woff))            # Match font formats (svg already matched above).
+        | (?:(mp4|webm|ogg))            # Match HTML5 video formats.
+        | (?:(styl))                    # Force a dependency on other Stylus files, or imports break.
+      \z/x
+    end
+  end
+
   class << self
+    attr_writer :configuration
+
     @@compress  = false
     @@debug     = false
     @@paths     = []
     @@imports   = []
     @@definitions = {}
     @@plugins   = {}
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
+
+    def configure
+      yield configuration
+    end
 
     # Stores a list of plugins to import inside `Stylus`, with an optional hash.
     def use(*options)
