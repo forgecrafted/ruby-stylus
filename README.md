@@ -63,8 +63,22 @@ Any `@import` directive will add the stylesheet as a sprockets dependency, so yo
 
 If the `config.assets.debug` is turned on, Stylus will emit extra comments on your stylesheets to help debugging and inspection using the `linenos` and `firebug` options. Check the [FireStylus extension for Firebug](https://github.com/stylus/stylus/blob/master/docs/firebug.md) for more info.
 
-### `@import` and file extensions.
+It should be noted that in a default rails project you should also remove the sass-rails gem. This gem includes the tilt gem required by the asset pipeline so you should also add that gem back on its own.
 
+```
+# gem 'sass-rails'
+gem 'tilt'
+```
+
+For compilation of assets during deployment (e.g. for heroku) you'll also need to enable/add the rubyracer gem.
+
+```
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+```
+
+### `@import` and file extensions.
+  
 Stylus and Sprockets file lookups differ on the subject of handling file extensions, and that may hurt a bit.
 
 If you use Stylus `@import` to expose variables, mixins or just to concatenate code, you should use only the `.styl` extension on your imported files. If you use the `.css.styl` form (a convention from Sprockets), Stylus will treat it as a plain CSS file since it has `.css` on its name.
