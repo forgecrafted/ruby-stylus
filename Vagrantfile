@@ -38,6 +38,7 @@ Vagrant.configure("2") do |config|
   # Ruby dev box by forgecrafted
   # https://github.com/forgecrafted/vagrant-provision-ruby
   config.vm.provision "shell", inline: "curl -fsS https://raw.githubusercontent.com/forgecrafted/vagrant-provision-ruby/master/script | bash"
+  config.vm.provision "shell", path: "post-install.sh"
 end
 
 #
