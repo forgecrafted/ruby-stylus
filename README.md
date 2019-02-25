@@ -1,8 +1,13 @@
-# Ruby Stylus
+## THIS GEM IS DEPRECATED
 
-[![Gem Version](https://badge.fury.io/rb/stylus.svg)](http://badge.fury.io/rb/stylus)
-[![Build Status](https://travis-ci.org/forgecrafted/ruby-stylus.svg?branch=master)](https://travis-ci.org/forgecrafted/ruby-stylus)
-[![Coverage Status](https://coveralls.io/repos/forgecrafted/ruby-stylus/badge.svg)](https://coveralls.io/r/forgecrafted/ruby-stylus)
+This gem is no longer maintained due to a steady decline in Stylus support and
+adoption. We have moved all our projects over to [Sass](http://www.sass-lang.com/).
+If you utilize the [original Sass syntax](http://www.thesassway.com/editorial/sass-vs-scss-which-syntax-is-better)
+(as opposed to the newer `SCSS`), the migration is relatively easy.
+
+If you would like to maintain this repo, go ahead and open a ticket.
+
+# Ruby Stylus
 
 `stylus` is a bridge between Ruby and the [Stylus](https://github.com/stylus/stylus) library that runs on [node.js](http://nodejs.org). It has support for Rails 4 applications. (if you are working with Rails 3, check the [0-7-stable](https://github.com/forgecrafted/ruby-stylus/tree/0-7-stable) branch.)
 
@@ -78,7 +83,7 @@ gem 'therubyracer', platforms: :ruby
 ```
 
 ### `@import` and file extensions.
-  
+
 Stylus and Sprockets file lookups differ on the subject of handling file extensions, and that may hurt a bit.
 
 If you use Stylus `@import` to expose variables, mixins or just to concatenate code, you should use only the `.styl` extension on your imported files. If you use the `.css.styl` form (a convention from Sprockets), Stylus will treat it as a plain CSS file since it has `.css` on its name.
