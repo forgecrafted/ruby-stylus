@@ -39,8 +39,19 @@ module Stylus
     Stylus.debug = options.fetch(:debug, Stylus.debug)
     Stylus.compress = options.fetch(:compress, Stylus.compress)
     template = detect_template_hander(options)
-    environment.register_engine('.styl', template)
-    environment.register_preprocessor('text/css', Stylus::ImportProcessor)
+
+    if environment.respond_to?(:register_transformer)
+      environment.register_mime_type 'text/styl', extensions: ['.styl']
+      environment.register_mime_type 'text/css', extensions: ['.css']
+
+      environment.register_transformer 'text/styl', 'text/css', template
+    end
+
+    if environment.respond_to?(:register_engine)
+      args = ['.styl', template]
+      args << { mime_type: 'text/styl', silence_deprecation: true } if Sprockets::VERSION.start_with?("3")
+      environment.register_engine(*args)
+    end
   end
 
   # Internal: Gets the desired Tilt template handler to the current configuration.
